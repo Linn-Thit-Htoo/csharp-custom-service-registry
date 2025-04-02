@@ -1,0 +1,6 @@
+@CustomServiceRegistry.RegistryApi_HostAddress = http://localhost:5009
+
+GET {{CustomServiceRegistry.RegistryApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,10 @@
+﻿using System.Text.Json;
+
+namespace CustomServiceRegistry.RegistryApi.Extensions
+{
+    public static class Extension
+    {
+        public static string ToJson(this object obj) => JsonSerializer.Serialize(obj);
+        public static T ToObject<T>(this string jsonStr) => JsonSerializer.Deserialize<T>(jsonStr)!;
+    }
+}

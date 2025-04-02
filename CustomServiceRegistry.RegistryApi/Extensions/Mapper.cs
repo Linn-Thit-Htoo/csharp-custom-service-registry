@@ -1,0 +1,26 @@
+﻿using CustomServiceRegistry.RegistryApi.Collections;
+using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
+using CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
+
+namespace CustomServiceRegistry.RegistryApi.Extensions
+{
+    public static class Mapper
+    {
+        public static TenantCollection ToCollection(this CreateTenantCommand command)
+        {
+            return new TenantCollection
+            {
+                ApplicationName = command.ApplicationName,
+                TenantId = Guid.NewGuid()
+            };
+        }
+
+        public static CentralRegistryCollection ToCollection(this RegisterServiceCommand command)
+        {
+            return new CentralRegistryCollection
+            {
+                
+            };
+        }
+    }
+}
