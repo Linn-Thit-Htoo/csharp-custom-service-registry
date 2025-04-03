@@ -1,8 +1,10 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
+﻿using CustomServiceRegistry.RegistryApi.Configurations;
+using CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
 using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
 using CustomServiceRegistry.RegistryApi.Middlewares;
 using CustomServiceRegistry.RegistryApi.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CustomServiceRegistry.RegistryApi.Extensions
 {
@@ -31,6 +33,7 @@ namespace CustomServiceRegistry.RegistryApi.Extensions
             builder.Services.AddScoped<IServiceLogService, ServiceLogService>();
             builder.Services.AddTransient<CheckApiKeyMiddleware>();
             builder.Services.AddHostedService<ActiveHealthCheckBackgroundService>();
+            builder.Services.Configure<AppSetting>(builder);
             builder.Services.AddHealthChecks();
             builder.Services.AddHttpClient();
             builder.Services.AddHttpContextAccessor();

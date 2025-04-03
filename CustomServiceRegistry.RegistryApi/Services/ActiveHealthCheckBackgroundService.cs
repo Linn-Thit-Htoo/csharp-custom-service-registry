@@ -1,7 +1,9 @@
 ﻿using CustomServiceRegistry.RegistryApi.Collections;
+using CustomServiceRegistry.RegistryApi.Configurations;
 using CustomServiceRegistry.RegistryApi.Constants;
 using CustomServiceRegistry.RegistryApi.Extensions;
 using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Polly;
 using System;
@@ -15,13 +17,15 @@ namespace CustomServiceRegistry.RegistryApi.Services
         private readonly IMongoCollection<ServiceLogCollection> _serviceLogCollection;
         private readonly ILogger<CentralRegistryCollection> _logger;
         private readonly IServiceScopeFactory _serviceScopeFactory;
+        private readonly AppSetting _setting;
 
-        public ActiveHealthCheckBackgroundService(ILogger<CentralRegistryCollection> logger, IServiceScopeFactory serviceScopeFactory)
+        public ActiveHealthCheckBackgroundService(ILogger<CentralRegistryCollection> logger, IServiceScopeFactory serviceScopeFactory, IOptions<AppSetting> settings)
         {
             _centralRegistryCollection = CollectionNames.CentralRegistryCollection.GetCollection<CentralRegistryCollection>();
             _serviceLogCollection = CollectionNames.ServiceLogCollection.GetCollection<ServiceLogCollection>();
             _logger = logger;
             _serviceScopeFactory = serviceScopeFactory;
+            _setting = settings.Value;
         }
 
         protected async override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -41,7 +45,7 @@ namespace CustomServiceRegistry.RegistryApi.Services
                         .Handle<WebException>()
                         .Or<Exception>()
                         .RetryAsync(
-                            3,
+                            _setting.RetryCount,
                             onRetry: async (exception, retryCount, context) =>
                             {
                                 _logger.LogError($"Service: {item.ServiceId}, Tenant Id: {item.TenantId} Retry Count: {retryCount}, Reason: {exception}");
