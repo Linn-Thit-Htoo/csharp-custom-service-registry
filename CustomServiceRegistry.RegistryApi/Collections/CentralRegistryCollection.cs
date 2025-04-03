@@ -9,10 +9,8 @@ namespace CustomServiceRegistry.RegistryApi.Collections
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-
         [BsonRepresentation(BsonType.String)]
         public Guid ServiceId { get; set; }
-
 
         [BsonRepresentation(BsonType.String)]
         public Guid TenantId { get; set; }
