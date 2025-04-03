@@ -1,4 +1,5 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
+﻿using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
+using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
 
 namespace CustomServiceRegistry.RegistryApi.Extensions
 {
@@ -23,6 +24,7 @@ namespace CustomServiceRegistry.RegistryApi.Extensions
             });
 
             builder.Services.AddScoped<ITenantService, TenantService>();
+            builder.Services.AddScoped<IServiceRegistryService, ServiceRegistryService>();
             builder.Services.AddHealthChecks();
             builder.Services.AddHttpClient();
 
