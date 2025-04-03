@@ -20,7 +20,7 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
             _centralRegistryCollection = CollectionNames.CentralRegistryCollection.GetCollection<CentralRegistryCollection>();
         }
 
-        public async Task<Result<RegisterServiceResponse>> RegisterServiceAsync(RegisterServiceCommand command, CancellationToken cs = default)
+        public async Task<Result<RegisterServiceResponse>> RegisterServiceAsync(RegisterServiceCommand command, Guid tenantId, CancellationToken cs = default)
         {
             Result<RegisterServiceResponse> result;
 
@@ -34,7 +34,7 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
                 goto result;
             }
 
-            await _centralRegistryCollection.InsertOneAsync(command.ToCollection(), cancellationToken: cs);
+            await _centralRegistryCollection.InsertOneAsync(command.ToCollection(tenantId), cancellationToken: cs);
             result = Result<RegisterServiceResponse>.Success();
 
             result:

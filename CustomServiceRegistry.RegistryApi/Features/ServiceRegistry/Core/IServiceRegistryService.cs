@@ -6,7 +6,7 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
 {
     public interface IServiceRegistryService
     {
-        Task<Result<RegisterServiceResponse>> RegisterServiceAsync(RegisterServiceCommand command, CancellationToken cs = default);
+        Task<Result<RegisterServiceResponse>> RegisterServiceAsync(RegisterServiceCommand command, Guid tenantId, CancellationToken cs = default);
         Task<Result<RegisterServiceResponse>> DeregisterAsync(DeregisterServiceCommand command, CancellationToken cs = default);
     }
 }

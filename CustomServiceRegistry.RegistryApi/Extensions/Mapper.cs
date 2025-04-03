@@ -15,11 +15,12 @@ namespace CustomServiceRegistry.RegistryApi.Extensions
             };
         }
 
-        public static CentralRegistryCollection ToCollection(this RegisterServiceCommand command)
+        public static CentralRegistryCollection ToCollection(this RegisterServiceCommand command, Guid tenantId)
         {
             return new CentralRegistryCollection
             {
                 ServiceId = Guid.NewGuid(),
+                TenantId = tenantId,
                 HealthCheckUrl = command.HealthCheckUrl,
                 HostName = command.HostName,
                 Port = command.Port,
