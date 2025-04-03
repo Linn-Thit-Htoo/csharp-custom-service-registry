@@ -1,5 +1,4 @@
-﻿
-using CustomServiceRegistry.RegistryApi.Collections;
+﻿using CustomServiceRegistry.RegistryApi.Collections;
 using CustomServiceRegistry.RegistryApi.Constants;
 using CustomServiceRegistry.RegistryApi.Extensions;
 using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
@@ -50,12 +49,11 @@ namespace CustomServiceRegistry.RegistryApi.Services
                         .FallbackAsync(
                             async (ct) =>
                             {
-                                _logger.LogError(
-                                    "All Health Checks Failed. Service will be deregistered."
+                                _logger.LogError($"All health checks failed for service: {item.ServiceId}. Service: {item.ServiceId} will be deregistered."
                                 );
                                 await registryService.DeregisterAsync(item.ServiceId, ct);
                                 return new HttpResponseMessage(
-                                    System.Net.HttpStatusCode.ServiceUnavailable
+                                    HttpStatusCode.ServiceUnavailable
                                 );
                             }
                         );
@@ -63,7 +61,8 @@ namespace CustomServiceRegistry.RegistryApi.Services
                     var policy = fallbackPolicy.WrapAsync(retryPolicy);
                     HttpClient httpClient = scope.ServiceProvider.GetRequiredService<HttpClient>();
 
-                    await policy.ExecuteAsync(() => httpClient.GetAsync(item.HealthCheckUrl));
+                    await policy.ExecuteAsync(() => httpClient.GetAsync(item.HealthCheckUrl, cancellationToken: stoppingToken));
+                    await Task.Delay(TimeSpan.FromMilliseconds(1000), stoppingToken);
                 }
             }
         }
