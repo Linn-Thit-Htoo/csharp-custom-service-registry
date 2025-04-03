@@ -6,48 +6,47 @@ using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
 using CustomServiceRegistry.RegistryApi.Utils;
 using MongoDB.Driver;
 
-namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core
+namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
+
+public class TenantService : ITenantService
 {
-    public class TenantService : ITenantService
+    private readonly IMongoCollection<TenantCollection> _tenantCollection;
+
+    public TenantService()
     {
-        private readonly IMongoCollection<TenantCollection> _tenantCollection;
+        _tenantCollection = CollectionNames.TenantCollection.GetCollection<TenantCollection>();
+    }
 
-        public TenantService()
+    public async Task<Result<CreateTenantResponse>> CreateTenantAsync(CreateTenantCommand command, CancellationToken cs = default)
+    {
+        var tenant = command.ToCollection();
+        await _tenantCollection.InsertOneAsync(tenant, cancellationToken: cs);
+
+        return Result<CreateTenantResponse>.Success(new CreateTenantResponse()
         {
-            _tenantCollection = CollectionNames.TenantCollection.GetCollection<TenantCollection>();
+            ApiKey = tenant.TenantId.ToString()
+        });
+    }
+
+    public async Task<Result<GetTenantByIdResponse>> GetTenantByIdAsync(string tenantId, CancellationToken cancellationToken = default)
+    {
+        Result<GetTenantByIdResponse> result;
+
+        var item = await _tenantCollection.Find(x => x.TenantId == Guid.Parse(tenantId)).FirstOrDefaultAsync(cancellationToken: cancellationToken);
+
+        if (item is null)
+        {
+            result = Result<GetTenantByIdResponse>.Fail("No data found.");
+            goto result;
         }
 
-        public async Task<Result<CreateTenantResponse>> CreateTenantAsync(CreateTenantCommand command, CancellationToken cs = default)
+        result = Result<GetTenantByIdResponse>.Success(new GetTenantByIdResponse()
         {
-            var tenant = command.ToCollection();
-            await _tenantCollection.InsertOneAsync(tenant, cancellationToken: cs);
+            TenantId = item.TenantId,
+            ApplicationName = item.ApplicationName
+        });
 
-            return Result<CreateTenantResponse>.Success(new CreateTenantResponse()
-            {
-                ApiKey = tenant.TenantId.ToString()
-            });
-        }
-
-        public async Task<Result<GetTenantByIdResponse>> GetTenantByIdAsync(string tenantId, CancellationToken cancellationToken = default)
-        {
-            Result<GetTenantByIdResponse> result;
-
-            var item = await _tenantCollection.Find(x => x.TenantId == Guid.Parse(tenantId)).FirstOrDefaultAsync(cancellationToken: cancellationToken);
-
-            if (item is null)
-            {
-                result = Result<GetTenantByIdResponse>.Fail("No data found.");
-                goto result;
-            }
-
-            result = Result<GetTenantByIdResponse>.Success(new GetTenantByIdResponse()
-            {
-                TenantId = item.TenantId,
-                ApplicationName = item.ApplicationName
-            });
-
-            result:
-            return result;
-        }
+        result:
+        return result;
     }
 }
