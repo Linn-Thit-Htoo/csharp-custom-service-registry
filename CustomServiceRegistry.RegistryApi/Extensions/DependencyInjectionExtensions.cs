@@ -29,6 +29,7 @@ namespace CustomServiceRegistry.RegistryApi.Extensions
             builder.Services.AddTransient<CheckApiKeyMiddleware>();
             builder.Services.AddHealthChecks();
             builder.Services.AddHttpClient();
+            builder.Services.AddHttpContextAccessor();
 
             builder.Services.AddCors(options =>
             {

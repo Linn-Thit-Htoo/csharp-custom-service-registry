@@ -33,6 +33,7 @@ namespace CustomServiceRegistry.RegistryApi.Middlewares
                 context.Response.StatusCode = (int)HttpStatusCode.OK;
                 context.Response.ContentType = "application/json";
                 await context.Response.WriteAsync(result.ToJson());
+
                 return;
             }
 
