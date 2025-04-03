@@ -42,7 +42,7 @@ namespace CustomServiceRegistry.RegistryApi.Services
                         .Or<Exception>()
                         .RetryAsync(
                             3,
-                            onRetry: (exception, retryCount, context) =>
+                            onRetry: async (exception, retryCount, context) =>
                             {
                                 _logger.LogError($"Service: {item.ServiceId}, Tenant Id: {item.TenantId} Retry Count: {retryCount}, Reason: {exception}");
 

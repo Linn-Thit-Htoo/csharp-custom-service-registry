@@ -1,6 +1,5 @@
 using CustomServiceRegistry.RegistryApi.Extensions;
 using CustomServiceRegistry.RegistryApi.Middlewares;
-using Hangfire;
 
 namespace CustomServiceRegistry.RegistryApi
 {

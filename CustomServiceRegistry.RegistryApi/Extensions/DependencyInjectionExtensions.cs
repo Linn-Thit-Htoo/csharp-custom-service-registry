@@ -1,4 +1,5 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
+﻿using CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
+using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
 using CustomServiceRegistry.RegistryApi.Middlewares;
 using CustomServiceRegistry.RegistryApi.Services;
@@ -27,6 +28,7 @@ namespace CustomServiceRegistry.RegistryApi.Extensions
 
             builder.Services.AddScoped<ITenantService, TenantService>();
             builder.Services.AddScoped<IServiceRegistryService, ServiceRegistryService>();
+            builder.Services.AddScoped<IServiceLogService, ServiceLogService>();
             builder.Services.AddTransient<CheckApiKeyMiddleware>();
             builder.Services.AddHostedService<ActiveHealthCheckBackgroundService>();
             builder.Services.AddHealthChecks();
