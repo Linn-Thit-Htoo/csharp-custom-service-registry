@@ -41,21 +41,22 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
             return result;
         }
 
-        public async Task<Result<RegisterServiceResponse>> DeregisterAsync(DeregisterServiceCommand command, CancellationToken cs = default)
+        public async Task<Result<DeregisterServiceResponse>> DeregisterAsync(DeregisterServiceCommand command, Guid tenantId, CancellationToken cs = default)
         {
-            Result<RegisterServiceResponse> result;
+            Result<DeregisterServiceResponse> result;
 
-            var item = await _centralRegistryCollection.Find(x => x.ServiceId == command.ServiceId).SingleOrDefaultAsync(cancellationToken: cs);
+            var item = await _centralRegistryCollection
+                .Find(x => x.ServiceId == command.ServiceId && x.TenantId == tenantId).SingleOrDefaultAsync(cancellationToken: cs);
             if (item is null)
             {
-                result = Result<RegisterServiceResponse>.Fail("Service not found.");
+                result = Result<DeregisterServiceResponse>.Fail("Service not found.");
                 goto result;
             }
 
             var filter = Builders<CentralRegistryCollection>.Filter.Eq(x => x.ServiceId, command.ServiceId);
             await _centralRegistryCollection.DeleteOneAsync(filter, cs);
 
-            result = Result<RegisterServiceResponse>.Success();
+            result = Result<DeregisterServiceResponse>.Success();
 
             result:
             return result;
