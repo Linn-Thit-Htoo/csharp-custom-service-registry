@@ -33,7 +33,7 @@ namespace CustomServiceRegistry.RegistryApi.Extensions
             builder.Services.AddScoped<IServiceLogService, ServiceLogService>();
             builder.Services.AddTransient<CheckApiKeyMiddleware>();
             builder.Services.AddHostedService<ActiveHealthCheckBackgroundService>();
-            builder.Services.Configure<AppSetting>(builder);
+            builder.Services.Configure<AppSetting>(builder.Configuration);
             builder.Services.AddHealthChecks();
             builder.Services.AddHttpClient();
             builder.Services.AddHttpContextAccessor();
