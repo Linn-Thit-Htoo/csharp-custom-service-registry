@@ -1,4 +1,5 @@
 using CustomServiceRegistry.RegistryApi.Extensions;
+using CustomServiceRegistry.RegistryApi.Middlewares;
 
 namespace CustomServiceRegistry.RegistryApi
 {
@@ -25,6 +26,8 @@ namespace CustomServiceRegistry.RegistryApi
             app.UseHealthChecks("/health");
 
             app.UseAuthorization();
+
+            app.UseCheckApiKeyMiddleware();
 
             app.MapControllers();
 

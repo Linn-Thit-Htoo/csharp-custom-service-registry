@@ -1,5 +1,6 @@
 ﻿using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
+using CustomServiceRegistry.RegistryApi.Middlewares;
 
 namespace CustomServiceRegistry.RegistryApi.Extensions
 {
@@ -25,6 +26,7 @@ namespace CustomServiceRegistry.RegistryApi.Extensions
 
             builder.Services.AddScoped<ITenantService, TenantService>();
             builder.Services.AddScoped<IServiceRegistryService, ServiceRegistryService>();
+            builder.Services.AddTransient<CheckApiKeyMiddleware>();
             builder.Services.AddHealthChecks();
             builder.Services.AddHttpClient();
 
@@ -42,6 +44,11 @@ namespace CustomServiceRegistry.RegistryApi.Extensions
             });
 
             return services;
+        }
+
+        public static IApplicationBuilder UseCheckApiKeyMiddleware(this WebApplication app)
+        {
+            return app.UseMiddleware<CheckApiKeyMiddleware>();
         }
     }
 }
