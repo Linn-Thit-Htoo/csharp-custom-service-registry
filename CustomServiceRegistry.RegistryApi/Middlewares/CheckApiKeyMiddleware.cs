@@ -44,8 +44,8 @@ namespace CustomServiceRegistry.RegistryApi.Middlewares
         {
             return new List<string>()
             {
-                "/api/SaveTenant",
-                "/api/GetTenantInfoById"
+                "/api/Tenant/SaveTenant",
+                "/api/Tenant/GetTenantInfoById"
             };
         }
     }
