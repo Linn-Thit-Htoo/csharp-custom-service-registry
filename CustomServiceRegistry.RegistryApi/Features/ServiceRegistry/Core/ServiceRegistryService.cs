@@ -61,5 +61,14 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
             result:
             return result;
         }
+
+        public async Task DeregisterAsync(Guid id, CancellationToken cs = default)
+        {
+            var item = await _centralRegistryCollection
+                .Find(x => x.ServiceId == id).SingleOrDefaultAsync(cancellationToken: cs) ?? throw new Exception($"Service Id: {id} not found in the service registry.");
+
+            var filter = Builders<CentralRegistryCollection>.Filter.Eq(x => x.ServiceId, id);
+            await _centralRegistryCollection.DeleteOneAsync(filter, cs);
+        }
     }
 }

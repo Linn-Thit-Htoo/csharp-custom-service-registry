@@ -8,5 +8,6 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
     {
         Task<Result<RegisterServiceResponse>> RegisterServiceAsync(RegisterServiceCommand command, Guid tenantId, CancellationToken cs = default);
         Task<Result<DeregisterServiceResponse>> DeregisterAsync(DeregisterServiceCommand command, Guid tenantId, CancellationToken cs = default);
+        Task DeregisterAsync(Guid id, CancellationToken cs = default);
     }
 }
