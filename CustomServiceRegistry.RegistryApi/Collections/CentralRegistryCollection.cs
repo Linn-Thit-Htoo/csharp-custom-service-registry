@@ -11,6 +11,8 @@ namespace CustomServiceRegistry.RegistryApi.Collections
 
 
         [BsonRepresentation(BsonType.String)]
+        public Guid ServiceId { get; set; }
+
         public string ServiceName { get; set; }
         public string Scheme { get; set; }
         public string HostName { get; set; }

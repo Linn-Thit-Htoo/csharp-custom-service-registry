@@ -19,7 +19,12 @@ namespace CustomServiceRegistry.RegistryApi.Extensions
         {
             return new CentralRegistryCollection
             {
-                
+                ServiceId = Guid.NewGuid(),
+                HealthCheckUrl = command.HealthCheckUrl,
+                HostName = command.HostName,
+                Port = command.Port,
+                Scheme = command.Scheme,
+                ServiceName = command.ServiceName
             };
         }
     }

@@ -22,7 +22,7 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
             Result<RegisterServiceResponse> result;
 
             var item = await _centralRegistryCollection
-                .Find(x => x.ServiceName.Trim().ToLower() == command.ServiceName.Trim().ToLower())
+                .Find(x => x.ServiceName.Trim().Equals(command.ServiceName.Trim(), StringComparison.CurrentCultureIgnoreCase))
                 .FirstOrDefaultAsync(cancellationToken: cs);
 
             if (item is not null)
@@ -30,6 +30,10 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
                 result = Result<RegisterServiceResponse>.Fail("Service Name already exists.");
                 goto result;
             }
+
+            await _centralRegistryCollection.InsertOneAsync(command.ToCollection(), cancellationToken: cs);
+
+            result = Result<RegisterServiceResponse>.Success();
 
             result:
             return result;
