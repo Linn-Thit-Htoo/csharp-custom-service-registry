@@ -1,5 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Constants;
-using CustomServiceRegistry.RegistryApi.Features.Core;
+﻿using CustomServiceRegistry.RegistryApi.Features.Core;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using System.Text.Json;
