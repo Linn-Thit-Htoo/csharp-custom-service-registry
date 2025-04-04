@@ -5,7 +5,6 @@ using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
 using CustomServiceRegistry.RegistryApi.Middlewares;
 using CustomServiceRegistry.RegistryApi.Services;
 using Microsoft.AspNetCore.ResponseCompression;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace CustomServiceRegistry.RegistryApi.Extensions
 {
