@@ -14,10 +14,12 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
     public class ServiceRegistryService : IServiceRegistryService
     {
         private readonly IMongoCollection<CentralRegistryCollection> _centralRegistryCollection;
+        private readonly IMongoCollection<ServiceLogCollection> _serviceLogCollection;
 
         public ServiceRegistryService()
         {
             _centralRegistryCollection = CollectionNames.CentralRegistryCollection.GetCollection<CentralRegistryCollection>();
+            _serviceLogCollection = CollectionNames.ServiceLogCollection.GetCollection<ServiceLogCollection>();
         }
 
         public async Task<Result<RegisterServiceResponse>> RegisterServiceAsync(RegisterServiceCommand command, Guid tenantId, CancellationToken cs = default)
@@ -37,7 +39,7 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
             await _centralRegistryCollection.InsertOneAsync(command.ToCollection(tenantId), cancellationToken: cs);
             result = Result<RegisterServiceResponse>.Success();
 
-            result:
+        result:
             return result;
         }
 
@@ -56,9 +58,14 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
             var filter = Builders<CentralRegistryCollection>.Filter.Eq(x => x.ServiceId, command.ServiceId);
             await _centralRegistryCollection.DeleteOneAsync(filter, cs);
 
+            var serviceLogsDeleteFilter = Builders<ServiceLogCollection>
+                .Filter
+                .Eq(x => x.ServiceInfo.ServiceId, item.ServiceId);
+            await _serviceLogCollection.DeleteManyAsync(serviceLogsDeleteFilter, cs);
+
             result = Result<DeregisterServiceResponse>.Success();
 
-            result:
+        result:
             return result;
         }
 
