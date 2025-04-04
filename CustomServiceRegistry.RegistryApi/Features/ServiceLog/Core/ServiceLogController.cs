@@ -2,6 +2,7 @@
 using CustomServiceRegistry.RegistryApi.Features.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 using System.Text.Json;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core
@@ -20,18 +21,27 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core
         }
 
         [HttpGet("StreamLogs")]
-        public async Task StreamLogs(CancellationToken cs)
+        public async Task StreamLogs(string apikey, CancellationToken cs)
         {
-            string apiKey = _httpContext.Request.Headers[ApplicationConstants.ApiKey].ToString();
+            _httpContext.Response.Headers.ContentType = "text/event-stream";
+            _httpContext.Response.Headers.CacheControl = "no-cache";
+            _httpContext.Response.Headers.Connection = "keep-alive";
 
-            _httpContext.Response.Headers.Append("Content-Type", "text/event-stream");
+            var responseStream = _httpContext.Response.Body;
 
             while (!cs.IsCancellationRequested)
             {
-                var lst = await _serviceLogService.GetLogCollectionAsync(Guid.Parse(apiKey), cs);
+                var lst = await _serviceLogService.GetLogCollectionAsync(Guid.Parse(apikey), cs);
 
-                await JsonSerializer.SerializeAsync(_httpContext.Response.Body, lst);
-                await _httpContext.Response.Body.FlushAsync();
+                string jsonStr = JsonSerializer.Serialize(lst);
+
+                var sseMessage = $"data: {jsonStr}\n\n";
+
+                var bytes = Encoding.UTF8.GetBytes(sseMessage);
+                await responseStream.WriteAsync(bytes, cs);
+                await responseStream.FlushAsync(cs);
+
+                await Task.Delay(1000, cs);
             }
         }
     }

@@ -4,6 +4,7 @@ using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
 using CustomServiceRegistry.RegistryApi.Middlewares;
 using CustomServiceRegistry.RegistryApi.Services;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CustomServiceRegistry.RegistryApi.Extensions
@@ -49,6 +50,18 @@ namespace CustomServiceRegistry.RegistryApi.Extensions
                             .AllowCredentials()
                             .SetIsOriginAllowed((hosts) => true)
                 );
+            });
+
+            builder.Services.AddResponseCompression(opt =>
+            {
+                opt.EnableForHttps = true;
+                opt.Providers.Add<GzipCompressionProvider>();
+                opt.MimeTypes = ResponseCompressionDefaults.MimeTypes;
+            });
+
+            builder.Services.Configure<GzipCompressionProviderOptions>(opt =>
+            {
+                opt.Level = System.IO.Compression.CompressionLevel.SmallestSize;
             });
 
             return services;

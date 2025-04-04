@@ -13,6 +13,8 @@ namespace CustomServiceRegistry.RegistryApi
 
             var app = builder.Build();
 
+            app.UseResponseCompression();
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

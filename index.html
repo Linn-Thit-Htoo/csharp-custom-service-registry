@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const apiKey = "ae2cf54b-c2a5-4e18-895a-520be1a1a74d";
+      const eventSource = new EventSource(
+        `https://localhost:7193/api/ServiceLog/StreamLogs?apikey=${apiKey}`
+      );
+
+      eventSource.onmessage = function (event) {
+        const item = JSON.parse(event.data);
+        console.log("New item received:", item);
+      };
+    </script>
+  </body>
+</html>
