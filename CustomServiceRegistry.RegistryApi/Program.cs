@@ -1,5 +1,4 @@
 using CustomServiceRegistry.RegistryApi.Extensions;
-using CustomServiceRegistry.RegistryApi.Middlewares;
 
 namespace CustomServiceRegistry.RegistryApi
 {
