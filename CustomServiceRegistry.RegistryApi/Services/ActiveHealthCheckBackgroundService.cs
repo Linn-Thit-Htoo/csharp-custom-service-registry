@@ -135,7 +135,7 @@ namespace CustomServiceRegistry.RegistryApi.Services
                                 }
                             }, cancellationToken: stoppingToken);
 
-                            await Task.Delay(TimeSpan.FromMinutes(1000), stoppingToken);
+                            await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
                         }
                     }
                 }
