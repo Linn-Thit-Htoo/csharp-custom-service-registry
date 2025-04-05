@@ -4,7 +4,6 @@ using CustomServiceRegistry.RegistryApi.Extensions;
 using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
 using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
 using CustomServiceRegistry.RegistryApi.Utils;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using MongoDB.Driver;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
