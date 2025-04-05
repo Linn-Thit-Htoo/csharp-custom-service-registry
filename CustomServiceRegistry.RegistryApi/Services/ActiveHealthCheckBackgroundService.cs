@@ -1,4 +1,6 @@
-﻿using CustomServiceRegistry.RegistryApi.Collections;
+﻿using System;
+using System.Net;
+using CustomServiceRegistry.RegistryApi.Collections;
 using CustomServiceRegistry.RegistryApi.Configurations;
 using CustomServiceRegistry.RegistryApi.Constants;
 using CustomServiceRegistry.RegistryApi.Extensions;
@@ -6,8 +8,6 @@ using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Polly;
-using System;
-using System.Net;
 
 namespace CustomServiceRegistry.RegistryApi.Services;
 
@@ -19,60 +19,74 @@ public class ActiveHealthCheckBackgroundService : BackgroundService
     private readonly IServiceScopeFactory _serviceScopeFactory;
     private readonly AppSetting _setting;
 
-    public ActiveHealthCheckBackgroundService(ILogger<CentralRegistryCollection> logger, IServiceScopeFactory serviceScopeFactory, IOptions<AppSetting> settings)
+    public ActiveHealthCheckBackgroundService(
+        ILogger<CentralRegistryCollection> logger,
+        IServiceScopeFactory serviceScopeFactory,
+        IOptions<AppSetting> settings
+    )
     {
-        _centralRegistryCollection = CollectionNames.CentralRegistryCollection.GetCollection<CentralRegistryCollection>();
-        _serviceLogCollection = CollectionNames.ServiceLogCollection.GetCollection<ServiceLogCollection>();
+        _centralRegistryCollection =
+            CollectionNames.CentralRegistryCollection.GetCollection<CentralRegistryCollection>();
+        _serviceLogCollection =
+            CollectionNames.ServiceLogCollection.GetCollection<ServiceLogCollection>();
         _logger = logger;
         _serviceScopeFactory = serviceScopeFactory;
         _setting = settings.Value;
     }
 
-    protected async override Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         try
         {
             while (true)
             {
                 var scope = _serviceScopeFactory.CreateScope();
-                var registryService = scope.ServiceProvider.GetRequiredService<IServiceRegistryService>();
+                var registryService =
+                    scope.ServiceProvider.GetRequiredService<IServiceRegistryService>();
 
-                var lst = await _centralRegistryCollection.Find(x => true).ToListAsync(cancellationToken: stoppingToken);
+                var lst = await _centralRegistryCollection
+                    .Find(x => true)
+                    .ToListAsync(cancellationToken: stoppingToken);
 
                 if (lst is not null && lst.Count > 0)
                 {
                     foreach (var item in lst)
                     {
                         var retryPolicy = Policy
-                        .Handle<WebException>()
-                        .Or<Exception>()
-                        .RetryAsync(
-                            _setting.RetryCount,
-                            onRetry: async (exception, retryCount, context) =>
-                            {
-                                _logger.LogError($"Service: {item.ServiceId}, Tenant Id: {item.TenantId} Retry Count: {retryCount}, Reason: {exception}");
-
-                                await _serviceLogCollection.InsertOneAsync(new ServiceLogCollection()
+                            .Handle<WebException>()
+                            .Or<Exception>()
+                            .RetryAsync(
+                                _setting.RetryCount,
+                                onRetry: async (exception, retryCount, context) =>
                                 {
-                                    LogId = Guid.NewGuid(),
-                                    IsSuccess = false,
-                                    ErrorMessage = exception.ToString(),
-                                    LogAt = DateTime.UtcNow,
-                                    TenantId = item.TenantId,
-                                    ServiceInfo = new CentralRegistryCollection()
-                                    {
-                                        ServiceId = item.ServiceId,
-                                        HealthCheckUrl = item.HealthCheckUrl,
-                                        HostName = item.HostName,
-                                        Port = item.Port,
-                                        Id = item.Id,
-                                        Scheme = item.Scheme,
-                                        ServiceName = item.ServiceName,
-                                        TenantId = item.TenantId
-                                    }
-                                }, cancellationToken: stoppingToken);
-                            }
-                        );
+                                    _logger.LogError(
+                                        $"Service: {item.ServiceId}, Tenant Id: {item.TenantId} Retry Count: {retryCount}, Reason: {exception}"
+                                    );
+
+                                    await _serviceLogCollection.InsertOneAsync(
+                                        new ServiceLogCollection()
+                                        {
+                                            LogId = Guid.NewGuid(),
+                                            IsSuccess = false,
+                                            ErrorMessage = exception.ToString(),
+                                            LogAt = DateTime.UtcNow,
+                                            TenantId = item.TenantId,
+                                            ServiceInfo = new CentralRegistryCollection()
+                                            {
+                                                ServiceId = item.ServiceId,
+                                                HealthCheckUrl = item.HealthCheckUrl,
+                                                HostName = item.HostName,
+                                                Port = item.Port,
+                                                Id = item.Id,
+                                                Scheme = item.Scheme,
+                                                ServiceName = item.ServiceName,
+                                                TenantId = item.TenantId
+                                            }
+                                        },
+                                        cancellationToken: stoppingToken
+                                    );
+                                }
+                            );
 
                         var fallbackPolicy = Policy<HttpResponseMessage>
                             .Handle<WebException>()
@@ -80,29 +94,34 @@ public class ActiveHealthCheckBackgroundService : BackgroundService
                             .FallbackAsync(
                                 async (ct) =>
                                 {
-                                    _logger.LogError($"All health checks failed for service: {item.ServiceId}. Service: {item.ServiceId} will be deregistered. Tenant Id: {item.TenantId}"
+                                    _logger.LogError(
+                                        $"All health checks failed for service: {item.ServiceId}. Service: {item.ServiceId} will be deregistered. Tenant Id: {item.TenantId}"
                                     );
                                     await registryService.DeregisterAsync(item.ServiceId, ct);
 
-                                    await _serviceLogCollection.InsertOneAsync(new ServiceLogCollection()
-                                    {
-                                        LogId = Guid.NewGuid(),
-                                        IsSuccess = false,
-                                        ErrorMessage = $"All health checks failed. Service Id: {item.ServiceId}, Service Name: {item.ServiceName} will be deregistered from the registry.",
-                                        LogAt = DateTime.UtcNow,
-                                        TenantId = item.TenantId,
-                                        ServiceInfo = new CentralRegistryCollection()
+                                    await _serviceLogCollection.InsertOneAsync(
+                                        new ServiceLogCollection()
                                         {
-                                            ServiceId = item.ServiceId,
-                                            HealthCheckUrl = item.HealthCheckUrl,
-                                            HostName = item.HostName,
-                                            Port = item.Port,
-                                            Id = item.Id,
-                                            Scheme = item.Scheme,
-                                            ServiceName = item.ServiceName,
+                                            LogId = Guid.NewGuid(),
+                                            IsSuccess = false,
+                                            ErrorMessage =
+                                                $"All health checks failed. Service Id: {item.ServiceId}, Service Name: {item.ServiceName} will be deregistered from the registry.",
+                                            LogAt = DateTime.UtcNow,
                                             TenantId = item.TenantId,
-                                        }
-                                    }, cancellationToken: stoppingToken);
+                                            ServiceInfo = new CentralRegistryCollection()
+                                            {
+                                                ServiceId = item.ServiceId,
+                                                HealthCheckUrl = item.HealthCheckUrl,
+                                                HostName = item.HostName,
+                                                Port = item.Port,
+                                                Id = item.Id,
+                                                Scheme = item.Scheme,
+                                                ServiceName = item.ServiceName,
+                                                TenantId = item.TenantId,
+                                            }
+                                        },
+                                        cancellationToken: stoppingToken
+                                    );
 
                                     return new HttpResponseMessage(
                                         HttpStatusCode.ServiceUnavailable
@@ -111,29 +130,39 @@ public class ActiveHealthCheckBackgroundService : BackgroundService
                             );
 
                         var policy = fallbackPolicy.WrapAsync(retryPolicy);
-                        HttpClient httpClient = scope.ServiceProvider.GetRequiredService<HttpClient>();
+                        HttpClient httpClient =
+                            scope.ServiceProvider.GetRequiredService<HttpClient>();
 
-                        await policy.ExecuteAsync(() => httpClient.GetAsync(item.HealthCheckUrl, cancellationToken: stoppingToken));
+                        await policy.ExecuteAsync(
+                            () =>
+                                httpClient.GetAsync(
+                                    item.HealthCheckUrl,
+                                    cancellationToken: stoppingToken
+                                )
+                        );
 
-                        await _serviceLogCollection.InsertOneAsync(new ServiceLogCollection()
-                        {
-                            LogId = Guid.NewGuid(),
-                            IsSuccess = true,
-                            ErrorMessage = null,
-                            LogAt = DateTime.UtcNow,
-                            TenantId = item.TenantId,
-                            ServiceInfo = new CentralRegistryCollection()
+                        await _serviceLogCollection.InsertOneAsync(
+                            new ServiceLogCollection()
                             {
-                                ServiceId = item.ServiceId,
-                                HealthCheckUrl = item.HealthCheckUrl,
-                                HostName = item.HostName,
-                                Port = item.Port,
-                                Id = item.Id,
-                                Scheme = item.Scheme,
-                                ServiceName = item.ServiceName,
-                                TenantId = item.TenantId
-                            }
-                        }, cancellationToken: stoppingToken);
+                                LogId = Guid.NewGuid(),
+                                IsSuccess = true,
+                                ErrorMessage = null,
+                                LogAt = DateTime.UtcNow,
+                                TenantId = item.TenantId,
+                                ServiceInfo = new CentralRegistryCollection()
+                                {
+                                    ServiceId = item.ServiceId,
+                                    HealthCheckUrl = item.HealthCheckUrl,
+                                    HostName = item.HostName,
+                                    Port = item.Port,
+                                    Id = item.Id,
+                                    Scheme = item.Scheme,
+                                    ServiceName = item.ServiceName,
+                                    TenantId = item.TenantId
+                                }
+                            },
+                            cancellationToken: stoppingToken
+                        );
 
                         await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
                     }
