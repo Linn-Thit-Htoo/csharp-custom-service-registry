@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using CustomServiceRegistry.RegistryApi.Collections;
 using CustomServiceRegistry.RegistryApi.Configurations;
 using CustomServiceRegistry.RegistryApi.Constants;
