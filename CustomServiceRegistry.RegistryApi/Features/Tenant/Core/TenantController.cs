@@ -28,7 +28,7 @@ namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core
         [HttpGet("GetTenantInfoById")]
         public async Task<IActionResult> GetTenantById(string id, CancellationToken cs)
         {
-            var query = new GetTenantByIdQuery() { TenantId = id };
+            var query = new GetTenantByIdQuery(id);
             var result = await _sender.Send(query, cs);
 
             return Content(result);
