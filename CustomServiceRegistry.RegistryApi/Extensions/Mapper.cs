@@ -15,7 +15,10 @@ public static class Mapper
         };
     }
 
-    public static CentralRegistryCollection ToCollection(this RegisterServiceCommand command, Guid tenantId)
+    public static CentralRegistryCollection ToCollection(
+        this RegisterServiceCommand command,
+        Guid tenantId
+    )
     {
         return new CentralRegistryCollection
         {
