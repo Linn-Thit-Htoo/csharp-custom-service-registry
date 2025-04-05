@@ -1,7 +1,6 @@
-﻿namespace CustomServiceRegistry.RegistryApi.Constants
+﻿namespace CustomServiceRegistry.RegistryApi.Constants;
+
+public class ApplicationConstants
 {
-    public class ApplicationConstants
-    {
-        public static string ApiKey { get; } = "X-Key";
-    }
+    public static string ApiKey { get; } = "X-Key";
 }
