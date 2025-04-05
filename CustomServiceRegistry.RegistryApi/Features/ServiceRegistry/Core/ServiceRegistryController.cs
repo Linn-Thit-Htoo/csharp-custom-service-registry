@@ -5,31 +5,30 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core
+namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ServiceRegistryController : BaseController
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ServiceRegistryController : BaseController
+    private readonly ISender _sender;
+
+    public ServiceRegistryController(ISender sender)
     {
-        private readonly ISender _sender;
+        _sender = sender;
+    }
 
-        public ServiceRegistryController(ISender sender)
-        {
-            _sender = sender;
-        }
+    [HttpPost("RegisterService")]
+    public async Task<IActionResult> RegisterService(RegisterServiceCommand command, CancellationToken cs)
+    {
+        var result = await _sender.Send(command, cs);
+        return Content(result);
+    }
 
-        [HttpPost("RegisterService")]
-        public async Task<IActionResult> RegisterService(RegisterServiceCommand command, CancellationToken cs)
-        {
-            var result = await _sender.Send(command, cs);
-            return Content(result);
-        }
-
-        [HttpPost("DeregisterService")]
-        public async Task<IActionResult> DeregisterService(DeregisterServiceCommand command, CancellationToken cs)
-        {
-            var result = await _sender.Send(command, cs);
-            return Content(result);
-        }
+    [HttpPost("DeregisterService")]
+    public async Task<IActionResult> DeregisterService(DeregisterServiceCommand command, CancellationToken cs)
+    {
+        var result = await _sender.Send(command, cs);
+        return Content(result);
     }
 }
