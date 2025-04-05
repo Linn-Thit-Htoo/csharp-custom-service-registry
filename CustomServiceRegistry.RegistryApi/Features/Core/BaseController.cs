@@ -1,5 +1,4 @@
 ﻿using CustomServiceRegistry.RegistryApi.Extensions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomServiceRegistry.RegistryApi.Features.Core
