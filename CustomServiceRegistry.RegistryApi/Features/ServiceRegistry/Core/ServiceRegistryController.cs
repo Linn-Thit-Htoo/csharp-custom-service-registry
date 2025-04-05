@@ -18,14 +18,20 @@ public class ServiceRegistryController : BaseController
     }
 
     [HttpPost("RegisterService")]
-    public async Task<IActionResult> RegisterService(RegisterServiceCommand command, CancellationToken cs)
+    public async Task<IActionResult> RegisterService(
+        RegisterServiceCommand command,
+        CancellationToken cs
+    )
     {
         var result = await _sender.Send(command, cs);
         return Content(result);
     }
 
     [HttpPost("DeregisterService")]
-    public async Task<IActionResult> DeregisterService(DeregisterServiceCommand command, CancellationToken cs)
+    public async Task<IActionResult> DeregisterService(
+        DeregisterServiceCommand command,
+        CancellationToken cs
+    )
     {
         var result = await _sender.Send(command, cs);
         return Content(result);
