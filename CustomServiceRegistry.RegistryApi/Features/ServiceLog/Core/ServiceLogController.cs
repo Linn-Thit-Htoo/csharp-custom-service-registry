@@ -1,7 +1,7 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.Core;
-using Microsoft.AspNetCore.Mvc;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
+using CustomServiceRegistry.RegistryApi.Features.Core;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
 
@@ -12,7 +12,10 @@ public class ServiceLogController : BaseController
     private readonly IServiceLogService _serviceLogService;
     private readonly HttpContext _httpContext;
 
-    public ServiceLogController(IServiceLogService serviceLogService, IHttpContextAccessor httpContextAccessor)
+    public ServiceLogController(
+        IServiceLogService serviceLogService,
+        IHttpContextAccessor httpContextAccessor
+    )
     {
         _serviceLogService = serviceLogService;
         _httpContext = httpContextAccessor.HttpContext!;
