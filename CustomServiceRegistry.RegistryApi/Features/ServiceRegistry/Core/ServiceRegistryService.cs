@@ -48,7 +48,7 @@ public class ServiceRegistryService : IServiceRegistryService
         );
         result = Result<RegisterServiceResponse>.Success();
 
-        result:
+    result:
         return result;
     }
 
@@ -83,7 +83,7 @@ public class ServiceRegistryService : IServiceRegistryService
 
         result = Result<DeregisterServiceResponse>.Success();
 
-        result:
+    result:
         return result;
     }
 
