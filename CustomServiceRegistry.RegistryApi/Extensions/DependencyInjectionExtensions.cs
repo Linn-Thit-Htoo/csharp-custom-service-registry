@@ -1,4 +1,5 @@
 ﻿using CustomServiceRegistry.RegistryApi.Configurations;
+using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
 using CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
 using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
@@ -42,6 +43,7 @@ public static class DependencyInjectionExtensions
         builder.Services.AddScoped<ITenantService, TenantService>();
         builder.Services.AddScoped<IServiceRegistryService, ServiceRegistryService>();
         builder.Services.AddScoped<IServiceLogService, ServiceLogService>();
+        builder.Services.AddScoped<IServiceDiscoveryService, ServiceDiscoveryService>();
         builder.Services.AddTransient<CheckApiKeyMiddleware>();
         builder.Services.AddHostedService<ActiveHealthCheckBackgroundService>();
         builder.Services.Configure<AppSetting>(builder.Configuration);
