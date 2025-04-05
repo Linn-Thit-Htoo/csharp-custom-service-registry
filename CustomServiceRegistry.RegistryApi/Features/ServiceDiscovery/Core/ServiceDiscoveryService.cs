@@ -16,11 +16,11 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core
             _centralRegistryCollection = CollectionNames.CentralRegistryCollection.GetCollection<CentralRegistryCollection>();
         }
 
-        public async Task<Result<DiscoverServiceResponse>> DiscoverServiceAsync(Guid id, CancellationToken cs = default)
+        public async Task<Result<DiscoverServiceResponse>> DiscoverServiceAsync(string serviceName, CancellationToken cs = default)
         {
             Result<DiscoverServiceResponse> result;
 
-            var item = await _centralRegistryCollection.Find(x => x.ServiceId == id)
+            var item = await _centralRegistryCollection.Find(x => x.ServiceName.ToLower().Equals(serviceName.ToLower()))
                 .FirstOrDefaultAsync(cancellationToken: cs);
             if (item is null)
             {

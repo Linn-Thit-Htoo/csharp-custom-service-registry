@@ -1,4 +1,5 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
+﻿using CustomServiceRegistry.RegistryApi.Extensions;
+using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
 using CustomServiceRegistry.RegistryApi.Utils;
 using MediatR;
 
@@ -17,13 +18,13 @@ namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverSe
         {
             Result<DiscoverServiceResponse> result;
 
-            if (request.ServiceId == Guid.Empty)
+            if (request.ServiceName.IsNullOrWhiteSpace())
             {
                 result = Result<DiscoverServiceResponse>.Fail("Id is required.");
                 goto result;
             }
 
-            result = await _serviceDiscoveryService.DiscoverServiceAsync(request.ServiceId, cancellationToken);
+            result = await _serviceDiscoveryService.DiscoverServiceAsync(request.ServiceName, cancellationToken);
 
         result:
             return result;

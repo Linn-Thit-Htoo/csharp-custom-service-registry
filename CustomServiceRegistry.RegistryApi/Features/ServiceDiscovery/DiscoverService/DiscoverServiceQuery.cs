@@ -3,8 +3,5 @@ using MediatR;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService
 {
-    public class DiscoverServiceQuery : IRequest<Result<DiscoverServiceResponse>>
-    {
-        public Guid ServiceId { get; set; }
-    }
+    public record DiscoverServiceQuery(string ServiceName) : IRequest<Result<DiscoverServiceResponse>>;
 }
