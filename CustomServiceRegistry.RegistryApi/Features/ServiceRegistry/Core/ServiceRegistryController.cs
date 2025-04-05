@@ -2,7 +2,6 @@
 using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
 using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
