@@ -3,44 +3,43 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using System.Text.Json;
 
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core
+namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ServiceLogController : BaseController
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ServiceLogController : BaseController
+    private readonly IServiceLogService _serviceLogService;
+    private readonly HttpContext _httpContext;
+
+    public ServiceLogController(IServiceLogService serviceLogService, IHttpContextAccessor httpContextAccessor)
     {
-        private readonly IServiceLogService _serviceLogService;
-        private readonly HttpContext _httpContext;
+        _serviceLogService = serviceLogService;
+        _httpContext = httpContextAccessor.HttpContext!;
+    }
 
-        public ServiceLogController(IServiceLogService serviceLogService, IHttpContextAccessor httpContextAccessor)
+    [HttpGet("StreamLogs")]
+    public async Task StreamLogs(string apikey, CancellationToken cs)
+    {
+        _httpContext.Response.Headers.ContentType = "text/event-stream";
+        _httpContext.Response.Headers.CacheControl = "no-cache";
+        _httpContext.Response.Headers.Connection = "keep-alive";
+
+        var responseStream = _httpContext.Response.Body;
+
+        while (!cs.IsCancellationRequested)
         {
-            _serviceLogService = serviceLogService;
-            _httpContext = httpContextAccessor.HttpContext!;
-        }
+            var lst = await _serviceLogService.GetLogCollectionAsync(Guid.Parse(apikey), cs);
 
-        [HttpGet("StreamLogs")]
-        public async Task StreamLogs(string apikey, CancellationToken cs)
-        {
-            _httpContext.Response.Headers.ContentType = "text/event-stream";
-            _httpContext.Response.Headers.CacheControl = "no-cache";
-            _httpContext.Response.Headers.Connection = "keep-alive";
+            string jsonStr = JsonSerializer.Serialize(lst);
 
-            var responseStream = _httpContext.Response.Body;
+            var sseMessage = $"data: {jsonStr}\n\n";
 
-            while (!cs.IsCancellationRequested)
-            {
-                var lst = await _serviceLogService.GetLogCollectionAsync(Guid.Parse(apikey), cs);
+            var bytes = Encoding.UTF8.GetBytes(sseMessage);
+            await responseStream.WriteAsync(bytes, cs);
+            await responseStream.FlushAsync(cs);
 
-                string jsonStr = JsonSerializer.Serialize(lst);
-
-                var sseMessage = $"data: {jsonStr}\n\n";
-
-                var bytes = Encoding.UTF8.GetBytes(sseMessage);
-                await responseStream.WriteAsync(bytes, cs);
-                await responseStream.FlushAsync(cs);
-
-                await Task.Delay(1000, cs);
-            }
+            await Task.Delay(1000, cs);
         }
     }
 }
