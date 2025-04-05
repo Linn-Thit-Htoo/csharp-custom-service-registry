@@ -2,7 +2,6 @@
 using CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
 using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core
