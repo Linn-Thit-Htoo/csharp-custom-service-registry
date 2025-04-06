@@ -95,6 +95,12 @@ public class ServiceRegistryService : IServiceRegistryService
                 .SingleOrDefaultAsync(cancellationToken: cs)
             ?? throw new Exception($"Service Id: {id} not found in the service registry.");
 
+        var serviceLogsDeleteFilter = Builders<ServiceLogCollection>.Filter.Eq(
+            x => x.ServiceInfo.ServiceId,
+            item.ServiceId
+        );
+        await _serviceLogCollection.DeleteManyAsync(serviceLogsDeleteFilter, cs);
+
         var filter = Builders<CentralRegistryCollection>.Filter.Eq(x => x.ServiceId, id);
         await _centralRegistryCollection.DeleteOneAsync(filter, cs);
     }
