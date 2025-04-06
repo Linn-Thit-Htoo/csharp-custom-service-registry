@@ -1,5 +1,4 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-
+﻿
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService;
 
 public class DiscoverServiceResponse
