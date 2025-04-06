@@ -46,7 +46,7 @@ public class ServiceDiscoveryService : IServiceDiscoveryService
             }
         );
 
-        result:
+    result:
         return result;
     }
 }
