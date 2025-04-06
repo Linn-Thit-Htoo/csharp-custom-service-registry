@@ -3,26 +3,25 @@ using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverServic
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core
+namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ServiceDiscoveryController : BaseController
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ServiceDiscoveryController : BaseController
+    private readonly ISender _sender;
+
+    public ServiceDiscoveryController(ISender sender)
     {
-        private readonly ISender _sender;
+        _sender = sender;
+    }
 
-        public ServiceDiscoveryController(ISender sender)
-        {
-            _sender = sender;
-        }
+    [HttpGet("DiscoverService")]
+    public async Task<IActionResult> DiscoverService(string serviceName, CancellationToken cs)
+    {
+        var query = new DiscoverServiceQuery(serviceName);
+        var result = await _sender.Send(query, cs);
 
-        [HttpGet("DiscoverService")]
-        public async Task<IActionResult> DiscoverService(string serviceName, CancellationToken cs)
-        {
-            var query = new DiscoverServiceQuery(serviceName);
-            var result = await _sender.Send(query, cs);
-
-            return Content(result);
-        }
+        return Content(result);
     }
 }
