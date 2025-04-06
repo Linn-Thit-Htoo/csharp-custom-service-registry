@@ -1,7 +1,6 @@
 ﻿using CustomServiceRegistry.RegistryApi.Features.Core;
 using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core
