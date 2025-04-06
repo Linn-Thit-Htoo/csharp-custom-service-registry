@@ -1,10 +1,9 @@
 ﻿using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService;
 using CustomServiceRegistry.RegistryApi.Utils;
 
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core
+namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
+
+public interface IServiceDiscoveryService
 {
-    public interface IServiceDiscoveryService
-    {
-        Task<Result<DiscoverServiceResponse>> DiscoverServiceAsync(string serviceName, CancellationToken cs = default);
-    }
+    Task<Result<DiscoverServiceResponse>> DiscoverServiceAsync(string serviceName, CancellationToken cs = default);
 }
