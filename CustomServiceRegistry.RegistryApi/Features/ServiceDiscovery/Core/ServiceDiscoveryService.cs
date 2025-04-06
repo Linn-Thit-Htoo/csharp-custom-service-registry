@@ -5,42 +5,41 @@ using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverServic
 using CustomServiceRegistry.RegistryApi.Utils;
 using MongoDB.Driver;
 
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core
+namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
+
+public class ServiceDiscoveryService : IServiceDiscoveryService
 {
-    public class ServiceDiscoveryService : IServiceDiscoveryService
+    private readonly IMongoCollection<CentralRegistryCollection> _centralRegistryCollection;
+
+    public ServiceDiscoveryService()
     {
-        private readonly IMongoCollection<CentralRegistryCollection> _centralRegistryCollection;
+        _centralRegistryCollection = CollectionNames.CentralRegistryCollection.GetCollection<CentralRegistryCollection>();
+    }
 
-        public ServiceDiscoveryService()
+    public async Task<Result<DiscoverServiceResponse>> DiscoverServiceAsync(string serviceName, CancellationToken cs = default)
+    {
+        Result<DiscoverServiceResponse> result;
+
+        var item = await _centralRegistryCollection.Find(x => x.ServiceName.ToLower().Equals(serviceName.ToLower()))
+            .FirstOrDefaultAsync(cancellationToken: cs);
+        if (item is null)
         {
-            _centralRegistryCollection = CollectionNames.CentralRegistryCollection.GetCollection<CentralRegistryCollection>();
+            result = Result<DiscoverServiceResponse>.NotFound("Service not found.");
+            goto result;
         }
 
-        public async Task<Result<DiscoverServiceResponse>> DiscoverServiceAsync(string serviceName, CancellationToken cs = default)
+        result = Result<DiscoverServiceResponse>.Success(new DiscoverServiceResponse
         {
-            Result<DiscoverServiceResponse> result;
+            ServiceId = item.ServiceId,
+            HealthCheckUrl = item.HealthCheckUrl,
+            HostName = item.HostName,
+            Port = item.Port,
+            Scheme = item.Scheme,
+            ServiceName = item.ServiceName,
+            TenantId = item.TenantId
+        });
 
-            var item = await _centralRegistryCollection.Find(x => x.ServiceName.ToLower().Equals(serviceName.ToLower()))
-                .FirstOrDefaultAsync(cancellationToken: cs);
-            if (item is null)
-            {
-                result = Result<DiscoverServiceResponse>.NotFound("Service not found.");
-                goto result;
-            }
-
-            result = Result<DiscoverServiceResponse>.Success(new DiscoverServiceResponse
-            {
-                ServiceId = item.ServiceId,
-                HealthCheckUrl = item.HealthCheckUrl,
-                HostName = item.HostName,
-                Port = item.Port,
-                Scheme = item.Scheme,
-                ServiceName = item.ServiceName,
-                TenantId = item.TenantId
-            });
-
-        result:
-            return result;
-        }
+    result:
+        return result;
     }
 }
