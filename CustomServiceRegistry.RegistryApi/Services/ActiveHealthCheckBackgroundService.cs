@@ -98,29 +98,29 @@ public class ActiveHealthCheckBackgroundService : BackgroundService
                                     );
                                     await registryService.DeregisterAsync(item.ServiceId, ct);
 
-                                    await _serviceLogCollection.InsertOneAsync(
-                                        new ServiceLogCollection()
-                                        {
-                                            LogId = Guid.NewGuid(),
-                                            IsSuccess = false,
-                                            ErrorMessage =
-                                                $"All health checks failed. Service Id: {item.ServiceId}, Service Name: {item.ServiceName} will be deregistered from the registry.",
-                                            LogAt = DateTime.UtcNow,
-                                            TenantId = item.TenantId,
-                                            ServiceInfo = new CentralRegistryCollection()
-                                            {
-                                                ServiceId = item.ServiceId,
-                                                HealthCheckUrl = item.HealthCheckUrl,
-                                                HostName = item.HostName,
-                                                Port = item.Port,
-                                                Id = item.Id,
-                                                Scheme = item.Scheme,
-                                                ServiceName = item.ServiceName,
-                                                TenantId = item.TenantId,
-                                            }
-                                        },
-                                        cancellationToken: stoppingToken
-                                    );
+                                    //await _serviceLogCollection.InsertOneAsync(
+                                    //    new ServiceLogCollection()
+                                    //    {
+                                    //        LogId = Guid.NewGuid(),
+                                    //        IsSuccess = false,
+                                    //        ErrorMessage =
+                                    //            $"All health checks failed. Service Id: {item.ServiceId}, Service Name: {item.ServiceName} will be deregistered from the registry.",
+                                    //        LogAt = DateTime.UtcNow,
+                                    //        TenantId = item.TenantId,
+                                    //        ServiceInfo = new CentralRegistryCollection()
+                                    //        {
+                                    //            ServiceId = item.ServiceId,
+                                    //            HealthCheckUrl = item.HealthCheckUrl,
+                                    //            HostName = item.HostName,
+                                    //            Port = item.Port,
+                                    //            Id = item.Id,
+                                    //            Scheme = item.Scheme,
+                                    //            ServiceName = item.ServiceName,
+                                    //            TenantId = item.TenantId,
+                                    //        }
+                                    //    },
+                                    //    cancellationToken: stoppingToken
+                                    //);
 
                                     return new HttpResponseMessage(
                                         HttpStatusCode.ServiceUnavailable
