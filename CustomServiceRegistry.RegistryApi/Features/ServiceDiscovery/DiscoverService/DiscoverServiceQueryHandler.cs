@@ -5,7 +5,8 @@ using MediatR;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService;
 
-public class DiscoverServiceQueryHandler : IRequestHandler<DiscoverServiceQuery, Result<DiscoverServiceResponse>>
+public class DiscoverServiceQueryHandler
+    : IRequestHandler<DiscoverServiceQuery, Result<DiscoverServiceResponse>>
 {
     private readonly IServiceDiscoveryService _serviceDiscoveryService;
 
@@ -14,7 +15,10 @@ public class DiscoverServiceQueryHandler : IRequestHandler<DiscoverServiceQuery,
         _serviceDiscoveryService = serviceDiscoveryService;
     }
 
-    public async Task<Result<DiscoverServiceResponse>> Handle(DiscoverServiceQuery request, CancellationToken cancellationToken)
+    public async Task<Result<DiscoverServiceResponse>> Handle(
+        DiscoverServiceQuery request,
+        CancellationToken cancellationToken
+    )
     {
         Result<DiscoverServiceResponse> result;
 
@@ -24,9 +28,12 @@ public class DiscoverServiceQueryHandler : IRequestHandler<DiscoverServiceQuery,
             goto result;
         }
 
-        result = await _serviceDiscoveryService.DiscoverServiceAsync(request.ServiceName, cancellationToken);
+        result = await _serviceDiscoveryService.DiscoverServiceAsync(
+            request.ServiceName,
+            cancellationToken
+        );
 
-    result:
+        result:
         return result;
     }
 }
