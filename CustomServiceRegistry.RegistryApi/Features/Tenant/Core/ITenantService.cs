@@ -2,11 +2,10 @@
 using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
 using CustomServiceRegistry.RegistryApi.Utils;
 
-namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core
+namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
+
+public interface ITenantService
 {
-    public interface ITenantService
-    {
-        Task<Result<CreateTenantResponse>> CreateTenantAsync(CreateTenantCommand command, CancellationToken cs = default);
-        Task<Result<GetTenantByIdResponse>> GetTenantByIdAsync(string tenantId, CancellationToken cancellationToken = default);
-    }
+    Task<Result<CreateTenantResponse>> CreateTenantAsync(CreateTenantCommand command, CancellationToken cs = default);
+    Task<Result<GetTenantByIdResponse>> GetTenantByIdAsync(string tenantId, CancellationToken cancellationToken = default);
 }
