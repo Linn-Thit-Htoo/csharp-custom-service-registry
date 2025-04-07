@@ -4,6 +4,7 @@ public class AppSetting
 {
     public Connectionstrings ConnectionStrings { get; set; }
     public int RetryCount { get; set; }
+    public int MaxRateLimitPerDayForEachTenant { get; set; }
     public Logging Logging { get; set; }
 }
 

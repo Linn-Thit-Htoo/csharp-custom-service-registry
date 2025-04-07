@@ -30,6 +30,8 @@ public class Program
 
         app.UseCheckApiKeyMiddleware();
 
+        app.UseRateLimiterMiddleware();
+
         app.MapControllers();
 
         app.Run();

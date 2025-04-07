@@ -45,6 +45,7 @@ public static class DependencyInjectionExtensions
         builder.Services.AddScoped<IServiceLogService, ServiceLogService>();
         builder.Services.AddScoped<IServiceDiscoveryService, ServiceDiscoveryService>();
         builder.Services.AddTransient<CheckApiKeyMiddleware>();
+        builder.Services.AddTransient<RateLimiterMiddleware>();
         builder.Services.AddHostedService<ActiveHealthCheckBackgroundService>();
         builder.Services.Configure<AppSetting>(builder.Configuration);
         builder.Services.AddHealthChecks();
@@ -82,5 +83,10 @@ public static class DependencyInjectionExtensions
     public static IApplicationBuilder UseCheckApiKeyMiddleware(this WebApplication app)
     {
         return app.UseMiddleware<CheckApiKeyMiddleware>();
+    }
+
+    public static IApplicationBuilder UseRateLimiterMiddleware(this WebApplication app)
+    {
+        return app.UseMiddleware<RateLimiterMiddleware>();
     }
 }
