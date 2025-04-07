@@ -31,7 +31,7 @@ namespace CustomServiceRegistry.RegistryApi.Middlewares
 
             if (item is not null)
             {
-                if (item.TotalRequest >= _appSetting.MaxRateLimitPerDayForEachTenant)
+                if (item.TotalRequest >= _appSetting.MaxRateLimitPerDayForEachTenant && item.CreatedAt.Day == DateTime.Now.Day)
                 {
                     result = Result<object>.Fail("Rate limit exceeded.", HttpStatusCode.TooManyRequests);
 
