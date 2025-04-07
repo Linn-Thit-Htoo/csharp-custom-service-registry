@@ -2,7 +2,7 @@ services:
   registry:
     image: registry:v1
     build:
-      context: /CustomServiceRegistry.RegistryApi
+      context: ./CustomServiceRegistry.RegistryApi
       dockerfile: Dockerfile
     ports:
       - "5165:80"
@@ -17,6 +17,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Staging
     restart: unless-stopped
     container_name: registry
+    depends_on:
+      - mongo
 
   mongo:
     image: mongo:latest
