@@ -23,7 +23,6 @@ namespace CustomServiceRegistry.RegistryApi.Middlewares
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             Result<object> result;
-            string requestPath = context.Request.Path;
             Guid apiKey = Guid.Parse(context.Request.Headers[ApplicationConstants.ApiKey].ToString());
 
             var item = await _tenantReateLimiterCollection
