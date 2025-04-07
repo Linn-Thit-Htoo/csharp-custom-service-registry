@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomServiceRegistry.RegistryApi", "CustomServiceRegistry.RegistryApi\CustomServiceRegistry.RegistryApi.csproj", "{4E59459D-E427-4BDA-AF3C-ED4F07C4F9F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E19C9BF-863D-434F-B934-77CCB68F41DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documents", "documents", "{0A17C735-4F91-46EA-BE9C-2D70E0ACCD17}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +25,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4E59459D-E427-4BDA-AF3C-ED4F07C4F9F4} = {2E19C9BF-863D-434F-B934-77CCB68F41DC}
 	EndGlobalSection
 EndGlobal
