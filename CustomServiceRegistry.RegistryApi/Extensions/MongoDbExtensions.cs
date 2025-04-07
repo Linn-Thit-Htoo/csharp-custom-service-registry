@@ -15,7 +15,7 @@ public static class MongoDbExtensions
         }
         else
         {
-            connectionString = "mongodb://mongo:27017";
+            connectionString = "mongodb://root:root@mongo:27017/?authSource=admin";
         }
 
         if (connectionString.IsNullOrWhiteSpace())
