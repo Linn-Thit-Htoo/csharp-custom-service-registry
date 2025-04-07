@@ -14,7 +14,7 @@ services:
           cpus: "0.3"
           memory: "100M"
     environment:
-      - ASPNETCORE_ENVIRONMENT=Staging
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
     restart: unless-stopped
     container_name: registry
     depends_on:
@@ -28,11 +28,11 @@ services:
     networks:
       - app_network
     volumes:
-      - ./volumes/db/var/lib/mongodb/data:/data/db
+      - ${MONGO_MOUNT_PATH}:/data/db
     restart: unless-stopped
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
 
 networks:
   app_network:
