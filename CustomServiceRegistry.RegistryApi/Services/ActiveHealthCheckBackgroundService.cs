@@ -57,7 +57,7 @@ public class ActiveHealthCheckBackgroundService : BackgroundService
 
                         if (logs is not null && logs.Count > 0)
                         {
-                            if (logs.Count >= 1000)
+                            if (logs.Count >= _setting.LogLimit)
                             {
                                 var deleteFilter = Builders<ServiceLogCollection>
                                     .Filter
