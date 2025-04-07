@@ -59,10 +59,14 @@ public class ActiveHealthCheckBackgroundService : BackgroundService
                         {
                             if (logs.Count >= _setting.LogLimit)
                             {
-                                var deleteFilter = Builders<ServiceLogCollection>
-                                    .Filter
-                                    .Eq(x => x.TenantId, item.TenantId);
-                                await _serviceLogCollection.DeleteManyAsync(deleteFilter, stoppingToken);
+                                var deleteFilter = Builders<ServiceLogCollection>.Filter.Eq(
+                                    x => x.TenantId,
+                                    item.TenantId
+                                );
+                                await _serviceLogCollection.DeleteManyAsync(
+                                    deleteFilter,
+                                    stoppingToken
+                                );
                             }
                         }
 
@@ -94,8 +98,8 @@ public class ActiveHealthCheckBackgroundService : BackgroundService
                                                 Id = item.Id,
                                                 Scheme = item.Scheme,
                                                 ServiceName = item.ServiceName,
-                                                TenantId = item.TenantId
-                                            }
+                                                TenantId = item.TenantId,
+                                            },
                                         },
                                         cancellationToken: stoppingToken
                                     );
@@ -132,7 +136,7 @@ public class ActiveHealthCheckBackgroundService : BackgroundService
                                                 Scheme = item.Scheme,
                                                 ServiceName = item.ServiceName,
                                                 TenantId = item.TenantId,
-                                            }
+                                            },
                                         },
                                         cancellationToken: stoppingToken
                                     );
@@ -172,8 +176,8 @@ public class ActiveHealthCheckBackgroundService : BackgroundService
                                     Id = item.Id,
                                     Scheme = item.Scheme,
                                     ServiceName = item.ServiceName,
-                                    TenantId = item.TenantId
-                                }
+                                    TenantId = item.TenantId,
+                                },
                             },
                             cancellationToken: stoppingToken
                         );
