@@ -7,65 +7,64 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System.Net;
 
-namespace CustomServiceRegistry.RegistryApi.Middlewares
-{
-    public class RateLimiterMiddleware : IMiddleware
-    {
-        private readonly IMongoCollection<TenantRateLimiterCollection> _tenantReateLimiterCollection;
-        private readonly AppSetting _appSetting;
+namespace CustomServiceRegistry.RegistryApi.Middlewares;
 
-        public RateLimiterMiddleware(IOptions<AppSetting> appSetting)
+public class RateLimiterMiddleware : IMiddleware
+{
+    private readonly IMongoCollection<TenantRateLimiterCollection> _tenantReateLimiterCollection;
+    private readonly AppSetting _appSetting;
+
+    public RateLimiterMiddleware(IOptions<AppSetting> appSetting)
+    {
+        _appSetting = appSetting.Value;
+        _tenantReateLimiterCollection = CollectionNames.TenantRateLimiterCollection.GetCollection<TenantRateLimiterCollection>();
+    }
+
+    public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+    {
+        Result<object> result;
+        string apiKey = context.Request.Headers[ApplicationConstants.ApiKey].ToString();
+
+        if (apiKey.IsNullOrWhiteSpace())
         {
-            _appSetting = appSetting.Value;
-            _tenantReateLimiterCollection = CollectionNames.TenantRateLimiterCollection.GetCollection<TenantRateLimiterCollection>();
+            await next(context);
+            return;
         }
 
-        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
-        {
-            Result<object> result;
-            string apiKey = context.Request.Headers[ApplicationConstants.ApiKey].ToString();
+        var item = await _tenantReateLimiterCollection
+            .Find(x => x.TenantId == Guid.Parse(apiKey))
+            .SingleOrDefaultAsync();
 
-            if (apiKey.IsNullOrWhiteSpace())
+        if (item is not null)
+        {
+            if (item.TotalRequest >= _appSetting.MaxRateLimitPerDayForEachTenant && item.CreatedAt.Day == DateTime.Now.Day)
             {
-                await next(context);
+                result = Result<object>.Fail("Rate limit exceeded.", HttpStatusCode.TooManyRequests);
+
+                context.Response.StatusCode = (int)HttpStatusCode.OK;
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsync(result.ToJson());
+
                 return;
             }
 
-            var item = await _tenantReateLimiterCollection
-                .Find(x => x.TenantId == Guid.Parse(apiKey))
-                .SingleOrDefaultAsync();
+            var updateFilter = Builders<TenantRateLimiterCollection>.Filter.Eq(x => x.TenantId, Guid.Parse(apiKey));
+            var update = Builders<TenantRateLimiterCollection>.Update.Inc(x => x.TotalRequest, 1);
 
-            if (item is not null)
-            {
-                if (item.TotalRequest >= _appSetting.MaxRateLimitPerDayForEachTenant && item.CreatedAt.Day == DateTime.Now.Day)
-                {
-                    result = Result<object>.Fail("Rate limit exceeded.", HttpStatusCode.TooManyRequests);
-
-                    context.Response.StatusCode = (int)HttpStatusCode.OK;
-                    context.Response.ContentType = "application/json";
-                    await context.Response.WriteAsync(result.ToJson());
-
-                    return;
-                }
-
-                var updateFilter = Builders<TenantRateLimiterCollection>.Filter.Eq(x => x.TenantId, Guid.Parse(apiKey));
-                var update = Builders<TenantRateLimiterCollection>.Update.Inc(x => x.TotalRequest, 1);
-
-                await _tenantReateLimiterCollection.UpdateOneAsync(updateFilter, update);
-            }
-            else
-            {
-                TenantRateLimiterCollection tenantRateLimiterCollection = new()
-                {
-                    RateLimiterId = Guid.NewGuid(),
-                    TenantId = Guid.Parse(apiKey),
-                    CreatedAt = DateTime.Now,
-                    TotalRequest = 1
-                };
-                await _tenantReateLimiterCollection.InsertOneAsync(tenantRateLimiterCollection);
-            }
-
-            await next(context);
+            await _tenantReateLimiterCollection.UpdateOneAsync(updateFilter, update);
         }
+        else
+        {
+            TenantRateLimiterCollection tenantRateLimiterCollection = new()
+            {
+                RateLimiterId = Guid.NewGuid(),
+                TenantId = Guid.Parse(apiKey),
+                CreatedAt = DateTime.Now,
+                TotalRequest = 1
+            };
+            await _tenantReateLimiterCollection.InsertOneAsync(tenantRateLimiterCollection);
+        }
+
+        await next(context);
     }
 }
