@@ -1,4 +1,5 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.Core;
+﻿using CustomServiceRegistry.RegistryApi.Constants;
+using CustomServiceRegistry.RegistryApi.Features.Core;
 using CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
 using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
 using MediatR;
@@ -11,10 +12,12 @@ namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core
     public class TenantController : BaseController
     {
         private readonly ISender _sender;
+        private readonly HttpContext _context;
 
-        public TenantController(ISender sender)
+        public TenantController(ISender sender, IHttpContextAccessor httpContextAccessor)
         {
             _sender = sender;
+            _context = httpContextAccessor.HttpContext!;
         }
 
         [HttpPost("SaveTenant")]
@@ -25,9 +28,11 @@ namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core
         }
 
         [HttpGet("GetTenantInfoById")]
-        public async Task<IActionResult> GetTenantById(string id, CancellationToken cs)
+        public async Task<IActionResult> GetTenantById(CancellationToken cs)
         {
-            var query = new GetTenantByIdQuery(id);
+            string apiKey = _context.Request.Headers[ApplicationConstants.ApiKey]!;
+
+            var query = new GetTenantByIdQuery(apiKey);
             var result = await _sender.Send(query, cs);
 
             return Content(result);

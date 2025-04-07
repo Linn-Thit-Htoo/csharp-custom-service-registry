@@ -23,10 +23,16 @@ namespace CustomServiceRegistry.RegistryApi.Middlewares
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             Result<object> result;
-            Guid apiKey = Guid.Parse(context.Request.Headers[ApplicationConstants.ApiKey].ToString());
+            string apiKey = context.Request.Headers[ApplicationConstants.ApiKey].ToString();
+
+            if (apiKey.IsNullOrWhiteSpace())
+            {
+                await next(context);
+                return;
+            }
 
             var item = await _tenantReateLimiterCollection
-                .Find(x => x.TenantId == apiKey)
+                .Find(x => x.TenantId == Guid.Parse(apiKey))
                 .SingleOrDefaultAsync();
 
             if (item is not null)
@@ -42,7 +48,7 @@ namespace CustomServiceRegistry.RegistryApi.Middlewares
                     return;
                 }
 
-                var updateFilter = Builders<TenantRateLimiterCollection>.Filter.Eq(x => x.TenantId, apiKey);
+                var updateFilter = Builders<TenantRateLimiterCollection>.Filter.Eq(x => x.TenantId, Guid.Parse(apiKey));
                 var update = Builders<TenantRateLimiterCollection>.Update.Inc(x => x.TotalRequest, 1);
 
                 await _tenantReateLimiterCollection.UpdateOneAsync(updateFilter, update);
@@ -52,7 +58,7 @@ namespace CustomServiceRegistry.RegistryApi.Middlewares
                 TenantRateLimiterCollection tenantRateLimiterCollection = new()
                 {
                     RateLimiterId = Guid.NewGuid(),
-                    TenantId = apiKey,
+                    TenantId = Guid.Parse(apiKey),
                     CreatedAt = DateTime.Now,
                     TotalRequest = 1
                 };
