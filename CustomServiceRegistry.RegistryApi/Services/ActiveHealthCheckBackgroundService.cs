@@ -51,6 +51,21 @@ public class ActiveHealthCheckBackgroundService : BackgroundService
                 {
                     foreach (var item in lst)
                     {
+                        var logs = await _serviceLogCollection
+                            .Find(x => x.TenantId == item.TenantId)
+                            .ToListAsync(cancellationToken: stoppingToken);
+
+                        if (logs is not null && logs.Count > 0)
+                        {
+                            if (logs.Count >= 1000)
+                            {
+                                var deleteFilter = Builders<ServiceLogCollection>
+                                    .Filter
+                                    .Eq(x => x.TenantId, item.TenantId);
+                                await _serviceLogCollection.DeleteManyAsync(deleteFilter, stoppingToken);
+                            }
+                        }
+
                         var retryPolicy = Policy
                             .Handle<WebException>()
                             .Or<Exception>()
