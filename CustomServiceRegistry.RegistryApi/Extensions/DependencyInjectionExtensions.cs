@@ -16,7 +16,6 @@ public static class DependencyInjectionExtensions
         WebApplicationBuilder builder
     )
     {
-        builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
         builder
@@ -35,7 +34,9 @@ public static class DependencyInjectionExtensions
                 opt.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
 
-        builder.Services.AddScoped<ITenantService, TenantService>()
+        builder.Services
+            .AddEndpointsApiExplorer()
+            .AddScoped<ITenantService, TenantService>()
             .AddScoped<IServiceRegistryService, ServiceRegistryService>()
             .AddScoped<IServiceLogService, ServiceLogService>()
             .AddScoped<IServiceDiscoveryService, ServiceDiscoveryService>()
