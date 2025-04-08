@@ -2,29 +2,28 @@
 using CustomServiceRegistry.RegistryApi.Utils;
 using MediatR;
 
-namespace CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById
+namespace CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
+
+public class GetTenantByIdQueryHandler : IRequestHandler<GetTenantByIdQuery, Result<GetTenantByIdResponse>>
 {
-    public class GetTenantByIdQueryHandler : IRequestHandler<GetTenantByIdQuery, Result<GetTenantByIdResponse>>
+    private readonly ITenantService _tenantService;
+
+    public GetTenantByIdQueryHandler(ITenantService tenantService)
     {
-        private readonly ITenantService _tenantService;
+        _tenantService = tenantService;
+    }
 
-        public GetTenantByIdQueryHandler(ITenantService tenantService)
+    public async Task<Result<GetTenantByIdResponse>> Handle(GetTenantByIdQuery request, CancellationToken cancellationToken)
+    {
+        Result<GetTenantByIdResponse> result;
+
+        if (string.IsNullOrWhiteSpace(request.TenantId))
         {
-            _tenantService = tenantService;
+            result = Result<GetTenantByIdResponse>.Fail("Tenant Id is required.");
         }
 
-        public async Task<Result<GetTenantByIdResponse>> Handle(GetTenantByIdQuery request, CancellationToken cancellationToken)
-        {
-            Result<GetTenantByIdResponse> result;
+        result = await _tenantService.GetTenantByIdAsync(request.TenantId, cancellationToken);
 
-            if (string.IsNullOrWhiteSpace(request.TenantId))
-            {
-                result = Result<GetTenantByIdResponse>.Fail("Tenant Id is required.");
-            }
-
-            result = await _tenantService.GetTenantByIdAsync(request.TenantId, cancellationToken);
-
-            return result;
-        }
+        return result;
     }
 }
