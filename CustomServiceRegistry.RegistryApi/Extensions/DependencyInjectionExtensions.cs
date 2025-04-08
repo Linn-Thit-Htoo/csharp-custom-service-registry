@@ -32,8 +32,8 @@ public static class DependencyInjectionExtensions
                 opt.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
 
-        builder.Services
-            .AddEndpointsApiExplorer()
+        builder
+            .Services.AddEndpointsApiExplorer()
             .AddSwaggerGen()
             .AddScoped<ITenantService, TenantService>()
             .AddScoped<IServiceRegistryService, ServiceRegistryService>()
