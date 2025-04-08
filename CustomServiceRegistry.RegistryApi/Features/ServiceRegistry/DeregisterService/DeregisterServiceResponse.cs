@@ -1,6 +1,5 @@
-﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
+
+public class DeregisterServiceResponse
 {
-    public class DeregisterServiceResponse
-    {
-    }
 }
