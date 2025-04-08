@@ -16,8 +16,6 @@ public static class DependencyInjectionExtensions
         WebApplicationBuilder builder
     )
     {
-        builder.Services.AddSwaggerGen();
-
         builder
             .Configuration.SetBasePath(builder.Environment.ContentRootPath)
             .AddJsonFile(
@@ -36,6 +34,7 @@ public static class DependencyInjectionExtensions
 
         builder.Services
             .AddEndpointsApiExplorer()
+            .AddSwaggerGen()
             .AddScoped<ITenantService, TenantService>()
             .AddScoped<IServiceRegistryService, ServiceRegistryService>()
             .AddScoped<IServiceLogService, ServiceLogService>()
