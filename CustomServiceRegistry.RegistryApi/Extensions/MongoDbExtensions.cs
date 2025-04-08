@@ -12,17 +12,11 @@ public static class MongoDbExtensions
         )!;
         string connectionString = string.Empty;
 
-        if (
+        connectionString =
             !environmentName.IsNullOrWhiteSpace()
             && environmentName.Equals(ApplicationConstants.DevelopmentEnvironment)
-        )
-        {
-            connectionString = ApplicationConstants.LocalMongoConnectionString;
-        }
-        else
-        {
-            connectionString = ApplicationConstants.ContainerizedMongoConnectionString;
-        }
+                ? ApplicationConstants.LocalMongoConnectionString
+                : ApplicationConstants.ContainerizedMongoConnectionString;
 
         if (connectionString.IsNullOrWhiteSpace())
             throw new ArgumentNullException("ConnectionString cannot be empty.");
