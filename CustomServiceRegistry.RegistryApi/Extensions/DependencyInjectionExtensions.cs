@@ -47,10 +47,10 @@ public static class DependencyInjectionExtensions
             .AddTransient<CheckApiKeyMiddleware>()
             .AddTransient<RateLimiterMiddleware>()
             .AddHostedService<ActiveHealthCheckBackgroundService>()
-            .Configure<AppSetting>(builder.Configuration);
+            .Configure<AppSetting>(builder.Configuration)
+            .AddHttpClient();
 
         builder.Services.AddHealthChecks();
-        builder.Services.AddHttpClient();
         builder.Services.AddHttpContextAccessor();
 
         builder.Services.AddCors(options =>
