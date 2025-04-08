@@ -1,6 +1,6 @@
-﻿using CustomServiceRegistry.RegistryApi.Utils;
+﻿using System.ComponentModel.DataAnnotations;
+using CustomServiceRegistry.RegistryApi.Utils;
 using MediatR;
-using System.ComponentModel.DataAnnotations;
 
 namespace CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
 
