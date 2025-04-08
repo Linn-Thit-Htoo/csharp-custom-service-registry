@@ -7,10 +7,10 @@ public static class MongoDbExtensions
 {
     public static IMongoCollection<T> GetCollection<T>(this string collectionName)
     {
-        string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")!;
+        string environmentName = Environment.GetEnvironmentVariable(ApplicationConstants.Environment)!;
         string connectionString = string.Empty;
 
-        if (!environmentName.IsNullOrWhiteSpace() && environmentName.Equals("Development"))
+        if (!environmentName.IsNullOrWhiteSpace() && environmentName.Equals(ApplicationConstants.DevelopmentEnvironment))
         {
             connectionString = ApplicationConstants.LocalMongoConnectionString;
         }
