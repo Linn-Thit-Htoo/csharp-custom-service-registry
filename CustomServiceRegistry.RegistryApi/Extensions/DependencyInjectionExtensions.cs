@@ -48,10 +48,10 @@ public static class DependencyInjectionExtensions
             .AddTransient<RateLimiterMiddleware>()
             .AddHostedService<ActiveHealthCheckBackgroundService>()
             .Configure<AppSetting>(builder.Configuration)
-            .AddHttpClient();
+            .AddHttpClient()
+            .AddHttpContextAccessor();
 
         builder.Services.AddHealthChecks();
-        builder.Services.AddHttpContextAccessor();
 
         builder.Services.AddCors(options =>
         {
