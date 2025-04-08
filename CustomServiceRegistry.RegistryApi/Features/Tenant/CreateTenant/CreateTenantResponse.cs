@@ -1,7 +1,6 @@
-﻿namespace CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant
+﻿namespace CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
+
+public class CreateTenantResponse
 {
-    public class CreateTenantResponse
-    {
-        public string ApiKey { get; set; }
-    }
+    public string ApiKey { get; set; }
 }
