@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using CustomServiceRegistry.RegistryApi.Constants;
+using MongoDB.Driver;
 
 namespace CustomServiceRegistry.RegistryApi.Extensions;
 
@@ -11,11 +12,11 @@ public static class MongoDbExtensions
 
         if (!environmentName.IsNullOrWhiteSpace() && environmentName.Equals("Development"))
         {
-            connectionString = "mongodb://localhost:27017";
+            connectionString = ApplicationConstants.LocalMongoConnectionString;
         }
         else
         {
-            connectionString = "mongodb://root:root@mongo:27017/?authSource=admin";
+            connectionString = ApplicationConstants.ContainerizedMongoConnectionString;
         }
 
         if (connectionString.IsNullOrWhiteSpace())
