@@ -49,22 +49,22 @@ public static class DependencyInjectionExtensions
             .AddHostedService<ActiveHealthCheckBackgroundService>()
             .Configure<AppSetting>(builder.Configuration)
             .AddHttpClient()
-            .AddHttpContextAccessor();
+            .AddHttpContextAccessor()
+            .AddCors(options =>
+            {
+                options.AddPolicy(
+                    "CORSPolicy",
+                    builder =>
+                        builder
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials()
+                            .SetIsOriginAllowed((hosts) => true)
+                );
+            });
 
         builder.Services.AddHealthChecks();
 
-        builder.Services.AddCors(options =>
-        {
-            options.AddPolicy(
-                "CORSPolicy",
-                builder =>
-                    builder
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials()
-                        .SetIsOriginAllowed((hosts) => true)
-            );
-        });
 
         builder.Services.AddResponseCompression(opt =>
         {
