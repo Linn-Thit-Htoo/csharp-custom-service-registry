@@ -3,29 +3,28 @@ using CustomServiceRegistry.RegistryApi.Utils;
 using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant
+namespace CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
+
+public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, Result<CreateTenantResponse>>
 {
-    public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, Result<CreateTenantResponse>>
+    private readonly ITenantService _tenantService;
+
+    public CreateTenantCommandHandler(ITenantService tenantService)
     {
-        private readonly ITenantService _tenantService;
+        _tenantService = tenantService;
+    }
 
-        public CreateTenantCommandHandler(ITenantService tenantService)
+    public async Task<Result<CreateTenantResponse>> Handle(CreateTenantCommand request, CancellationToken cancellationToken)
+    {
+        Result<CreateTenantResponse> result;
+        
+        if (string.IsNullOrWhiteSpace(request.ApplicationName))
         {
-            _tenantService = tenantService;
+            result = Result<CreateTenantResponse>.Fail("Application Name is required.");
         }
 
-        public async Task<Result<CreateTenantResponse>> Handle(CreateTenantCommand request, CancellationToken cancellationToken)
-        {
-            Result<CreateTenantResponse> result;
-            
-            if (string.IsNullOrWhiteSpace(request.ApplicationName))
-            {
-                result = Result<CreateTenantResponse>.Fail("Application Name is required.");
-            }
+        result = await _tenantService.CreateTenantAsync(request, cancellationToken);
 
-            result = await _tenantService.CreateTenantAsync(request, cancellationToken);
-
-            return result;
-        }
+        return result;
     }
 }
