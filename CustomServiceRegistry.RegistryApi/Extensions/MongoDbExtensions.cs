@@ -19,7 +19,7 @@ public static class MongoDbExtensions
                 : ApplicationConstants.ContainerizedMongoConnectionString;
 
         if (connectionString.IsNullOrWhiteSpace())
-            throw new ArgumentNullException("ConnectionString cannot be empty.");
+            throw new ArgumentNullException("Connection String cannot be empty.");
 
         var client = new MongoClient(connectionString);
         var database = client.GetDatabase(ApplicationConstants.DatabaseName);
