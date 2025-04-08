@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json;
+using CustomServiceRegistry.RegistryApi.Constants;
 using CustomServiceRegistry.RegistryApi.Features.Core;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,9 +25,9 @@ public class ServiceLogController : BaseController
     [HttpGet("StreamLogs")]
     public async Task StreamLogs(string apikey, CancellationToken cs)
     {
-        _httpContext.Response.Headers.ContentType = "text/event-stream";
-        _httpContext.Response.Headers.CacheControl = "no-cache";
-        _httpContext.Response.Headers.Connection = "keep-alive";
+        _httpContext.Response.Headers.ContentType = ApplicationConstants.ContentTypeSSE;
+        _httpContext.Response.Headers.CacheControl = ApplicationConstants.SSECacheControl;
+        _httpContext.Response.Headers.Connection = ApplicationConstants.SSEConnectionKeppAlive;
 
         var responseStream = _httpContext.Response.Body;
 

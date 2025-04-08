@@ -49,7 +49,7 @@ public class RateLimiterMiddleware : IMiddleware
                 );
 
                 context.Response.StatusCode = (int)HttpStatusCode.OK;
-                context.Response.ContentType = "application/json";
+                context.Response.ContentType = ApplicationConstants.ContentTypeJson;
                 await context.Response.WriteAsync(result.ToJson());
 
                 return;

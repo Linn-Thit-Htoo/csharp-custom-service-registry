@@ -31,7 +31,7 @@ public class CheckApiKeyMiddleware : IMiddleware
             result = Result<object>.NotFound("Api Key not found.");
 
             context.Response.StatusCode = (int)HttpStatusCode.OK;
-            context.Response.ContentType = "application/json";
+            context.Response.ContentType = ApplicationConstants.ContentTypeJson;
             await context.Response.WriteAsync(result.ToJson());
 
             return;
