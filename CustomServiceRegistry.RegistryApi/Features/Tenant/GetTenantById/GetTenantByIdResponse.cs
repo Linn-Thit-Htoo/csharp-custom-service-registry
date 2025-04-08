@@ -1,8 +1,7 @@
-﻿namespace CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById
+﻿namespace CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
+
+public class GetTenantByIdResponse
 {
-    public class GetTenantByIdResponse
-    {
-        public Guid TenantId { get; set; }
-        public string ApplicationName { get; set; }
-    }
+    public Guid TenantId { get; set; }
+    public string ApplicationName { get; set; }
 }
