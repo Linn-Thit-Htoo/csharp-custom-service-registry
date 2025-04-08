@@ -55,7 +55,7 @@ public class TenantService : ITenantService
             }
         );
 
-        result:
+    result:
         return result;
     }
 }
