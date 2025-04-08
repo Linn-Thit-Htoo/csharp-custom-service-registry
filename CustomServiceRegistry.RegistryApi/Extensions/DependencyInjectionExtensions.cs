@@ -67,15 +67,16 @@ public static class DependencyInjectionExtensions
                 opt.EnableForHttps = true;
                 opt.Providers.Add<GzipCompressionProvider>();
                 opt.MimeTypes = ResponseCompressionDefaults.MimeTypes;
+            })
+            .Configure<GzipCompressionProviderOptions>(opt =>
+            {
+                opt.Level = System.IO.Compression.CompressionLevel.SmallestSize;
             });
 
         builder.Services.AddHealthChecks();
 
 
-        builder.Services.Configure<GzipCompressionProviderOptions>(opt =>
-        {
-            opt.Level = System.IO.Compression.CompressionLevel.SmallestSize;
-        });
+        builder.Services;
 
         return services;
     }
