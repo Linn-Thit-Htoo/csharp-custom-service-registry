@@ -1,10 +1,18 @@
 ### Steps to enter mongodb shell via Putty (VPS)
 
-1. ``` docker exec -it mongo mongosh -u yourUsername -p yourPassword ```
-2. ``` show dbs ```
-3. ``` db.TenantCollection.find(); ```
+```
+docker exec -it mongo mongosh -u yourUsername -p yourPassword
+```
 
-### Export backup via docker
+```
+show dbs
+```
+
+```
+db.TenantCollection.find();
+```
+
+### Export backup inside the container
 ```
 docker exec mongo \
   mongoexport \
@@ -14,4 +22,8 @@ docker exec mongo \
   --db=ServiceRegistry \
   --collection=TenantCollection \
   --out=/data/backup/TenantCollection.json
+```
+### Copy the backup file from the container to the host machine
+```
+docker cp mongo:/data/backup/TenantCollection.json ./TenantCollection.json
 ```
