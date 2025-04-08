@@ -75,9 +75,6 @@ public static class DependencyInjectionExtensions
 
         builder.Services.AddHealthChecks();
 
-
-        builder.Services;
-
         return services;
     }
 
