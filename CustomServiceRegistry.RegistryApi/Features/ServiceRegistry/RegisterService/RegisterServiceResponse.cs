@@ -1,6 +1,5 @@
-﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
+
+public class RegisterServiceResponse
 {
-    public class RegisterServiceResponse
-    {
-    }
 }
