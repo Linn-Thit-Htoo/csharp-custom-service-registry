@@ -40,8 +40,8 @@ public static class DependencyInjectionExtensions
             config.RegisterServicesFromAssembly(typeof(DependencyInjectionExtensions).Assembly);
         });
 
-        builder.Services.AddScoped<ITenantService, TenantService>();
-        builder.Services.AddScoped<IServiceRegistryService, ServiceRegistryService>();
+        builder.Services.AddScoped<ITenantService, TenantService>()
+            .AddScoped<IServiceRegistryService, ServiceRegistryService>();
         builder.Services.AddScoped<IServiceLogService, ServiceLogService>();
         builder.Services.AddScoped<IServiceDiscoveryService, ServiceDiscoveryService>();
         builder.Services.AddTransient<CheckApiKeyMiddleware>();
