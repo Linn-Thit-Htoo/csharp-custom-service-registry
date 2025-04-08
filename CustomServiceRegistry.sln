@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documents", "documents", "{
 	ProjectSection(SolutionItems) = preProject
 		.env = .env
 		docker-compose.yml = docker-compose.yml
+		Service Registry Prod.postman_collection.json = Service Registry Prod.postman_collection.json
 	EndProjectSection
 EndProject
 Global
