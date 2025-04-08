@@ -43,9 +43,9 @@ public static class DependencyInjectionExtensions
         builder.Services.AddScoped<ITenantService, TenantService>()
             .AddScoped<IServiceRegistryService, ServiceRegistryService>()
             .AddScoped<IServiceLogService, ServiceLogService>()
-            .AddScoped<IServiceDiscoveryService, ServiceDiscoveryService>();
+            .AddScoped<IServiceDiscoveryService, ServiceDiscoveryService>()
+            .AddTransient<CheckApiKeyMiddleware>();
 
-        builder.Services.AddTransient<CheckApiKeyMiddleware>();
         builder.Services.AddTransient<RateLimiterMiddleware>();
         builder.Services.AddHostedService<ActiveHealthCheckBackgroundService>();
         builder.Services.Configure<AppSetting>(builder.Configuration);
