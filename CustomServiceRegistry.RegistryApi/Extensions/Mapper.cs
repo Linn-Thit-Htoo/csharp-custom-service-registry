@@ -11,7 +11,7 @@ public static class Mapper
         return new TenantCollection
         {
             ApplicationName = command.ApplicationName,
-            TenantId = Guid.NewGuid()
+            TenantId = Guid.NewGuid(),
         };
     }
 
@@ -28,7 +28,7 @@ public static class Mapper
             HostName = command.HostName,
             Port = command.Port,
             Scheme = command.Scheme,
-            ServiceName = command.ServiceName
+            ServiceName = command.ServiceName,
         };
     }
 }
