@@ -35,11 +35,6 @@ public static class DependencyInjectionExtensions
                 opt.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
 
-        builder.Services.AddMediatR(config =>
-        {
-            config.RegisterServicesFromAssembly(typeof(DependencyInjectionExtensions).Assembly);
-        });
-
         builder.Services.AddScoped<ITenantService, TenantService>()
             .AddScoped<IServiceRegistryService, ServiceRegistryService>()
             .AddScoped<IServiceLogService, ServiceLogService>()
@@ -50,6 +45,10 @@ public static class DependencyInjectionExtensions
             .Configure<AppSetting>(builder.Configuration)
             .AddHttpClient()
             .AddHttpContextAccessor()
+            .AddMediatR(config =>
+            {
+                config.RegisterServicesFromAssembly(typeof(DependencyInjectionExtensions).Assembly);
+            })
             .AddCors(options =>
             {
                 options.AddPolicy(
