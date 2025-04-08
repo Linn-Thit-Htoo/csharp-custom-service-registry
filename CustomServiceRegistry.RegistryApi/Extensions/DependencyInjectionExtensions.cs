@@ -61,17 +61,16 @@ public static class DependencyInjectionExtensions
                             .AllowCredentials()
                             .SetIsOriginAllowed((hosts) => true)
                 );
+            })
+            .AddResponseCompression(opt =>
+            {
+                opt.EnableForHttps = true;
+                opt.Providers.Add<GzipCompressionProvider>();
+                opt.MimeTypes = ResponseCompressionDefaults.MimeTypes;
             });
 
         builder.Services.AddHealthChecks();
 
-
-        builder.Services.AddResponseCompression(opt =>
-        {
-            opt.EnableForHttps = true;
-            opt.Providers.Add<GzipCompressionProvider>();
-            opt.MimeTypes = ResponseCompressionDefaults.MimeTypes;
-        });
 
         builder.Services.Configure<GzipCompressionProviderOptions>(opt =>
         {
