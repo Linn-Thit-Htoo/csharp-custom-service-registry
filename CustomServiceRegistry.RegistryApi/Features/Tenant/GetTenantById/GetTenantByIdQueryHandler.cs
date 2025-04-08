@@ -4,7 +4,8 @@ using MediatR;
 
 namespace CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
 
-public class GetTenantByIdQueryHandler : IRequestHandler<GetTenantByIdQuery, Result<GetTenantByIdResponse>>
+public class GetTenantByIdQueryHandler
+    : IRequestHandler<GetTenantByIdQuery, Result<GetTenantByIdResponse>>
 {
     private readonly ITenantService _tenantService;
 
@@ -13,7 +14,10 @@ public class GetTenantByIdQueryHandler : IRequestHandler<GetTenantByIdQuery, Res
         _tenantService = tenantService;
     }
 
-    public async Task<Result<GetTenantByIdResponse>> Handle(GetTenantByIdQuery request, CancellationToken cancellationToken)
+    public async Task<Result<GetTenantByIdResponse>> Handle(
+        GetTenantByIdQuery request,
+        CancellationToken cancellationToken
+    )
     {
         Result<GetTenantByIdResponse> result;
 
