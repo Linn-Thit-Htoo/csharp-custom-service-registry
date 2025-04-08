@@ -23,7 +23,7 @@ public static class MongoDbExtensions
             throw new ArgumentNullException("ConnectionString cannot be empty.");
 
         var client = new MongoClient(connectionString);
-        var database = client.GetDatabase("ServiceRegistry");
+        var database = client.GetDatabase(ApplicationConstants.DatabaseName);
         var collection = database.GetCollection<T>(collectionName);
 
         return collection;
