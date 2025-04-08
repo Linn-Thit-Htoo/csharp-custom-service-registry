@@ -1,0 +1,693 @@
+{
+	"info": {
+		"_postman_id": "1ed56b99-5b87-4c70-800c-f9bbe774ef4c",
+		"name": "Service Registry Prod",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39174719"
+	},
+	"item": [
+		{
+			"name": "Create New Tenant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ApplicationName\": \"Nyun Yat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://123.253.20.225:5165/api/Tenant/SaveTenant",
+					"protocol": "http",
+					"host": [
+						"123",
+						"253",
+						"20",
+						"225"
+					],
+					"port": "5165",
+					"path": [
+						"api",
+						"Tenant",
+						"SaveTenant"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ApplicationName\": \"Nyun Yat\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://123.253.20.225:5165/api/Tenant/SaveTenant",
+							"protocol": "http",
+							"host": [
+								"123",
+								"253",
+								"20",
+								"225"
+							],
+							"port": "5165",
+							"path": [
+								"api",
+								"Tenant",
+								"SaveTenant"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Apr 2025 03:19:38 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"StatusCode\": 200,\n    \"IsSuccess\": true,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"ApiKey\": \"52852524-7db1-432a-bcbc-fbe21ea1a9ec\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Tenant Info By Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Key",
+						"value": "52852524-7db1-432a-bcbc-fbe21ea1a9ec",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://123.253.20.225:5165/api/Tenant/GetTenantInfoById",
+					"protocol": "http",
+					"host": [
+						"123",
+						"253",
+						"20",
+						"225"
+					],
+					"port": "5165",
+					"path": [
+						"api",
+						"Tenant",
+						"GetTenantInfoById"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Key",
+								"value": "52852524-7db1-432a-bcbc-fbe21ea1a9ec",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://123.253.20.225:5165/api/Tenant/GetTenantInfoById",
+							"protocol": "http",
+							"host": [
+								"123",
+								"253",
+								"20",
+								"225"
+							],
+							"port": "5165",
+							"path": [
+								"api",
+								"Tenant",
+								"GetTenantInfoById"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Apr 2025 03:20:15 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"StatusCode\": 200,\n    \"IsSuccess\": true,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"TenantId\": \"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\n        \"ApplicationName\": \"Nyun Yat\"\n    }\n}"
+				},
+				{
+					"name": "429",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Key",
+								"value": "52852524-7db1-432a-bcbc-fbe21ea1a9ec",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://123.253.20.225:5165/api/Tenant/GetTenantInfoById",
+							"protocol": "http",
+							"host": [
+								"123",
+								"253",
+								"20",
+								"225"
+							],
+							"port": "5165",
+							"path": [
+								"api",
+								"Tenant",
+								"GetTenantInfoById"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Apr 2025 03:27:09 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"StatusCode\": 429,\n    \"IsSuccess\": false,\n    \"Message\": \"Rate limit exceeded.\",\n    \"Data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Stream Logs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://123.253.20.225:5165/api/ServiceLog/StreamLogs?apikey=52852524-7db1-432a-bcbc-fbe21ea1a9ec",
+					"protocol": "http",
+					"host": [
+						"123",
+						"253",
+						"20",
+						"225"
+					],
+					"port": "5165",
+					"path": [
+						"api",
+						"ServiceLog",
+						"StreamLogs"
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "52852524-7db1-432a-bcbc-fbe21ea1a9ec"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://123.253.20.225:5165/api/ServiceLog/StreamLogs?apikey=52852524-7db1-432a-bcbc-fbe21ea1a9ec",
+							"protocol": "http",
+							"host": [
+								"123",
+								"253",
+								"20",
+								"225"
+							],
+							"port": "5165",
+							"path": [
+								"api",
+								"ServiceLog",
+								"StreamLogs"
+							],
+							"query": [
+								{
+									"key": "apikey",
+									"value": "52852524-7db1-432a-bcbc-fbe21ea1a9ec"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/event-stream"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Apr 2025 03:23:47 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "data: [{\"Id\":\"67f496ba9c25d110b7a147c0\",\"LogId\":\"2966e267-c834-49ef-837c-bf017708eec3\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.596Z\",\"IsSuccess\":false,\"ErrorMessage\":\"All health checks failed. Service Id: 42556596-5b16-47b6-ad58-f1d233beb3fa, Service Name: auth will be deregistered from the registry.\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147c1\",\"LogId\":\"fb6050cb-168a-4274-a4b0-4eae234ee6cc\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.597Z\",\"IsSuccess\":true,\"ErrorMessage\":null,\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147be\",\"LogId\":\"01d6f7d4-1ef3-480f-a80c-1bbf647270bb\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.523Z\",\"IsSuccess\":false,\"ErrorMessage\":\"System.Net.Http.HttpRequestException: Connection refused (localhost:5136)\\n ---\\u003E System.Net.Sockets.SocketException (111): Connection refused\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)\\n   at System.Net.Sockets.Socket.\\u003CConnectAsync\\u003Eg__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   --- End of inner exception stack trace ---\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)\\n   at System.Threading.Tasks.TaskCompletionSourceWithCancellation\\u00601.WaitWithCancellationAsync(CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)\\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpClient.\\u003CSendAsync\\u003Eg__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)\\n   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func\\u00603 action, Context context, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates\\u00601 shouldRetryResultPredicates, Func\\u00605 onRetryAsync, CancellationToken cancellationToken, Int32 permittedRetryCount, IEnumerable\\u00601 sleepDurationsEnumerable, Func\\u00604 sleepDurationProvider, Boolean continueOnCapturedContext)\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}}]\n\ndata: [{\"Id\":\"67f496ba9c25d110b7a147c0\",\"LogId\":\"2966e267-c834-49ef-837c-bf017708eec3\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.596Z\",\"IsSuccess\":false,\"ErrorMessage\":\"All health checks failed. Service Id: 42556596-5b16-47b6-ad58-f1d233beb3fa, Service Name: auth will be deregistered from the registry.\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147c1\",\"LogId\":\"fb6050cb-168a-4274-a4b0-4eae234ee6cc\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.597Z\",\"IsSuccess\":true,\"ErrorMessage\":null,\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147be\",\"LogId\":\"01d6f7d4-1ef3-480f-a80c-1bbf647270bb\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.523Z\",\"IsSuccess\":false,\"ErrorMessage\":\"System.Net.Http.HttpRequestException: Connection refused (localhost:5136)\\n ---\\u003E System.Net.Sockets.SocketException (111): Connection refused\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)\\n   at System.Net.Sockets.Socket.\\u003CConnectAsync\\u003Eg__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   --- End of inner exception stack trace ---\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)\\n   at System.Threading.Tasks.TaskCompletionSourceWithCancellation\\u00601.WaitWithCancellationAsync(CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)\\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpClient.\\u003CSendAsync\\u003Eg__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)\\n   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func\\u00603 action, Context context, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates\\u00601 shouldRetryResultPredicates, Func\\u00605 onRetryAsync, CancellationToken cancellationToken, Int32 permittedRetryCount, IEnumerable\\u00601 sleepDurationsEnumerable, Func\\u00604 sleepDurationProvider, Boolean continueOnCapturedContext)\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}}]\n\ndata: [{\"Id\":\"67f496ba9c25d110b7a147c0\",\"LogId\":\"2966e267-c834-49ef-837c-bf017708eec3\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.596Z\",\"IsSuccess\":false,\"ErrorMessage\":\"All health checks failed. Service Id: 42556596-5b16-47b6-ad58-f1d233beb3fa, Service Name: auth will be deregistered from the registry.\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147c1\",\"LogId\":\"fb6050cb-168a-4274-a4b0-4eae234ee6cc\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.597Z\",\"IsSuccess\":true,\"ErrorMessage\":null,\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147be\",\"LogId\":\"01d6f7d4-1ef3-480f-a80c-1bbf647270bb\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.523Z\",\"IsSuccess\":false,\"ErrorMessage\":\"System.Net.Http.HttpRequestException: Connection refused (localhost:5136)\\n ---\\u003E System.Net.Sockets.SocketException (111): Connection refused\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)\\n   at System.Net.Sockets.Socket.\\u003CConnectAsync\\u003Eg__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   --- End of inner exception stack trace ---\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)\\n   at System.Threading.Tasks.TaskCompletionSourceWithCancellation\\u00601.WaitWithCancellationAsync(CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)\\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpClient.\\u003CSendAsync\\u003Eg__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)\\n   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func\\u00603 action, Context context, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates\\u00601 shouldRetryResultPredicates, Func\\u00605 onRetryAsync, CancellationToken cancellationToken, Int32 permittedRetryCount, IEnumerable\\u00601 sleepDurationsEnumerable, Func\\u00604 sleepDurationProvider, Boolean continueOnCapturedContext)\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}}]\n\ndata: [{\"Id\":\"67f496ba9c25d110b7a147c0\",\"LogId\":\"2966e267-c834-49ef-837c-bf017708eec3\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.596Z\",\"IsSuccess\":false,\"ErrorMessage\":\"All health checks failed. Service Id: 42556596-5b16-47b6-ad58-f1d233beb3fa, Service Name: auth will be deregistered from the registry.\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147c1\",\"LogId\":\"fb6050cb-168a-4274-a4b0-4eae234ee6cc\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.597Z\",\"IsSuccess\":true,\"ErrorMessage\":null,\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147be\",\"LogId\":\"01d6f7d4-1ef3-480f-a80c-1bbf647270bb\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.523Z\",\"IsSuccess\":false,\"ErrorMessage\":\"System.Net.Http.HttpRequestException: Connection refused (localhost:5136)\\n ---\\u003E System.Net.Sockets.SocketException (111): Connection refused\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)\\n   at System.Net.Sockets.Socket.\\u003CConnectAsync\\u003Eg__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   --- End of inner exception stack trace ---\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)\\n   at System.Threading.Tasks.TaskCompletionSourceWithCancellation\\u00601.WaitWithCancellationAsync(CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)\\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpClient.\\u003CSendAsync\\u003Eg__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)\\n   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func\\u00603 action, Context context, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates\\u00601 shouldRetryResultPredicates, Func\\u00605 onRetryAsync, CancellationToken cancellationToken, Int32 permittedRetryCount, IEnumerable\\u00601 sleepDurationsEnumerable, Func\\u00604 sleepDurationProvider, Boolean continueOnCapturedContext)\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}}]\n\ndata: [{\"Id\":\"67f496ba9c25d110b7a147c0\",\"LogId\":\"2966e267-c834-49ef-837c-bf017708eec3\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.596Z\",\"IsSuccess\":false,\"ErrorMessage\":\"All health checks failed. Service Id: 42556596-5b16-47b6-ad58-f1d233beb3fa, Service Name: auth will be deregistered from the registry.\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147c1\",\"LogId\":\"fb6050cb-168a-4274-a4b0-4eae234ee6cc\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.597Z\",\"IsSuccess\":true,\"ErrorMessage\":null,\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147be\",\"LogId\":\"01d6f7d4-1ef3-480f-a80c-1bbf647270bb\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.523Z\",\"IsSuccess\":false,\"ErrorMessage\":\"System.Net.Http.HttpRequestException: Connection refused (localhost:5136)\\n ---\\u003E System.Net.Sockets.SocketException (111): Connection refused\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)\\n   at System.Net.Sockets.Socket.\\u003CConnectAsync\\u003Eg__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   --- End of inner exception stack trace ---\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)\\n   at System.Threading.Tasks.TaskCompletionSourceWithCancellation\\u00601.WaitWithCancellationAsync(CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)\\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpClient.\\u003CSendAsync\\u003Eg__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)\\n   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func\\u00603 action, Context context, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates\\u00601 shouldRetryResultPredicates, Func\\u00605 onRetryAsync, CancellationToken cancellationToken, Int32 permittedRetryCount, IEnumerable\\u00601 sleepDurationsEnumerable, Func\\u00604 sleepDurationProvider, Boolean continueOnCapturedContext)\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}}]\n\ndata: [{\"Id\":\"67f496ba9c25d110b7a147c0\",\"LogId\":\"2966e267-c834-49ef-837c-bf017708eec3\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.596Z\",\"IsSuccess\":false,\"ErrorMessage\":\"All health checks failed. Service Id: 42556596-5b16-47b6-ad58-f1d233beb3fa, Service Name: auth will be deregistered from the registry.\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147c1\",\"LogId\":\"fb6050cb-168a-4274-a4b0-4eae234ee6cc\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.597Z\",\"IsSuccess\":true,\"ErrorMessage\":null,\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}},{\"Id\":\"67f496ba9c25d110b7a147be\",\"LogId\":\"01d6f7d4-1ef3-480f-a80c-1bbf647270bb\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"LogAt\":\"2025-04-08T03:23:38.523Z\",\"IsSuccess\":false,\"ErrorMessage\":\"System.Net.Http.HttpRequestException: Connection refused (localhost:5136)\\n ---\\u003E System.Net.Sockets.SocketException (111): Connection refused\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)\\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)\\n   at System.Net.Sockets.Socket.\\u003CConnectAsync\\u003Eg__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   --- End of inner exception stack trace ---\\n   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)\\n   at System.Threading.Tasks.TaskCompletionSourceWithCancellation\\u00601.WaitWithCancellationAsync(CancellationToken cancellationToken)\\n   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)\\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.\\u003CSendCoreAsync\\u003Eg__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)\\n   at System.Net.Http.HttpClient.\\u003CSendAsync\\u003Eg__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)\\n   at Polly.Retry.AsyncRetryEngine.ImplementationAsync[TResult](Func\\u00603 action, Context context, ExceptionPredicates shouldRetryExceptionPredicates, ResultPredicates\\u00601 shouldRetryResultPredicates, Func\\u00605 onRetryAsync, CancellationToken cancellationToken, Int32 permittedRetryCount, IEnumerable\\u00601 sleepDurationsEnumerable, Func\\u00604 sleepDurationProvider, Boolean continueOnCapturedContext)\",\"ServiceInfo\":{\"Id\":\"67f496ba9c25d110b7a147bc\",\"ServiceId\":\"42556596-5b16-47b6-ad58-f1d233beb3fa\",\"TenantId\":\"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\"ServiceName\":\"auth\",\"Scheme\":\"http\",\"HostName\":\"localhost\",\"Port\":5136,\"HealthCheckUrl\":\"http://localhost:5136/health\"}}]\n\n"
+				}
+			]
+		},
+		{
+			"name": "Register Service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Key",
+						"value": "52852524-7db1-432a-bcbc-fbe21ea1a9ec",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ServiceName\": \"auth\",\r\n    \"Scheme\": \"http\",\r\n    \"HostName\": \"localhost\",\r\n    \"Port\": 5136,\r\n    \"HealthCheckUrl\": \"http://localhost:5136/health\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://123.253.20.225:5165/api/ServiceRegistry/RegisterService",
+					"protocol": "http",
+					"host": [
+						"123",
+						"253",
+						"20",
+						"225"
+					],
+					"port": "5165",
+					"path": [
+						"api",
+						"ServiceRegistry",
+						"RegisterService"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Key",
+								"value": "52852524-7db1-432a-bcbc-fbe21ea1a9ec",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ServiceName\": \"auth\",\r\n    \"Scheme\": \"http\",\r\n    \"HostName\": \"localhost\",\r\n    \"Port\": 5136,\r\n    \"HealthCheckUrl\": \"http://localhost:5136/health\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://123.253.20.225:5165/api/ServiceRegistry/RegisterService",
+							"protocol": "http",
+							"host": [
+								"123",
+								"253",
+								"20",
+								"225"
+							],
+							"port": "5165",
+							"path": [
+								"api",
+								"ServiceRegistry",
+								"RegisterService"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Apr 2025 03:23:37 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"StatusCode\": 200,\n    \"IsSuccess\": true,\n    \"Message\": \"Success\",\n    \"Data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Discover Service",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Key",
+						"value": "52852524-7db1-432a-bcbc-fbe21ea1a9ec",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://123.253.20.225:5165/api/ServiceDiscovery/DiscoverService?serviceName=auth",
+					"protocol": "http",
+					"host": [
+						"123",
+						"253",
+						"20",
+						"225"
+					],
+					"port": "5165",
+					"path": [
+						"api",
+						"ServiceDiscovery",
+						"DiscoverService"
+					],
+					"query": [
+						{
+							"key": "serviceName",
+							"value": "auth"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "404",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Key",
+								"value": "52852524-7db1-432a-bcbc-fbe21ea1a9ec",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://123.253.20.225:5165/api/ServiceDiscovery/DiscoverService?serviceName=auth",
+							"protocol": "http",
+							"host": [
+								"123",
+								"253",
+								"20",
+								"225"
+							],
+							"port": "5165",
+							"path": [
+								"api",
+								"ServiceDiscovery",
+								"DiscoverService"
+							],
+							"query": [
+								{
+									"key": "serviceName",
+									"value": "auth"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Apr 2025 03:24:54 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"StatusCode\": 404,\n    \"IsSuccess\": false,\n    \"Message\": \"Service not found.\",\n    \"Data\": null\n}"
+				},
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Key",
+								"value": "52852524-7db1-432a-bcbc-fbe21ea1a9ec",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://123.253.20.225:5165/api/ServiceDiscovery/DiscoverService?serviceName=auth",
+							"protocol": "http",
+							"host": [
+								"123",
+								"253",
+								"20",
+								"225"
+							],
+							"port": "5165",
+							"path": [
+								"api",
+								"ServiceDiscovery",
+								"DiscoverService"
+							],
+							"query": [
+								{
+									"key": "serviceName",
+									"value": "auth"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Apr 2025 03:26:01 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"StatusCode\": 200,\n    \"IsSuccess\": true,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"ServiceId\": \"2372d505-0e0e-4cd7-a68d-fec897670e41\",\n        \"TenantId\": \"52852524-7db1-432a-bcbc-fbe21ea1a9ec\",\n        \"ServiceName\": \"auth\",\n        \"Scheme\": \"http\",\n        \"HostName\": \"localhost\",\n        \"Port\": 5136,\n        \"HealthCheckUrl\": \"http://localhost:5136/health\"\n    }\n}"
+				},
+				{
+					"name": "429",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Key",
+								"value": "52852524-7db1-432a-bcbc-fbe21ea1a9ec",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://123.253.20.225:5165/api/ServiceDiscovery/DiscoverService?serviceName=auth",
+							"protocol": "http",
+							"host": [
+								"123",
+								"253",
+								"20",
+								"225"
+							],
+							"port": "5165",
+							"path": [
+								"api",
+								"ServiceDiscovery",
+								"DiscoverService"
+							],
+							"query": [
+								{
+									"key": "serviceName",
+									"value": "auth"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Apr 2025 03:26:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"StatusCode\": 429,\n    \"IsSuccess\": false,\n    \"Message\": \"Rate limit exceeded.\",\n    \"Data\": null\n}"
+				}
+			]
+		}
+	]
+}
