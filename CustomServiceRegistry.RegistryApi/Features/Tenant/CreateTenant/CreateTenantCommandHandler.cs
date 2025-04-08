@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
 
-public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, Result<CreateTenantResponse>>
+public class CreateTenantCommandHandler
+    : IRequestHandler<CreateTenantCommand, Result<CreateTenantResponse>>
 {
     private readonly ITenantService _tenantService;
 
@@ -14,10 +15,13 @@ public class CreateTenantCommandHandler : IRequestHandler<CreateTenantCommand, R
         _tenantService = tenantService;
     }
 
-    public async Task<Result<CreateTenantResponse>> Handle(CreateTenantCommand request, CancellationToken cancellationToken)
+    public async Task<Result<CreateTenantResponse>> Handle(
+        CreateTenantCommand request,
+        CancellationToken cancellationToken
+    )
     {
         Result<CreateTenantResponse> result;
-        
+
         if (string.IsNullOrWhiteSpace(request.ApplicationName))
         {
             result = Result<CreateTenantResponse>.Fail("Application Name is required.");
