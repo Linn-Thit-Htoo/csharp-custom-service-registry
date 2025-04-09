@@ -1,8 +1,4 @@
-﻿global using CustomServiceRegistry.RegistryApi.Collections;
-global using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
-global using CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
-
-namespace CustomServiceRegistry.RegistryApi.Extensions;
+﻿namespace CustomServiceRegistry.RegistryApi.Extensions;
 
 public static class Mapper
 {

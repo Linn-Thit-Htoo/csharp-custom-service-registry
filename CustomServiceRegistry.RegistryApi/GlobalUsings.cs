@@ -9,3 +9,6 @@ global using CustomServiceRegistry.RegistryApi.Middlewares;
 global using CustomServiceRegistry.RegistryApi.Services;
 global using Microsoft.AspNetCore.ResponseCompression;
 global using System.Text.Json;
+global using CustomServiceRegistry.RegistryApi.Collections;
+global using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
+global using CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
