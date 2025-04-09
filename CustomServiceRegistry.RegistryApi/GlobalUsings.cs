@@ -1,2 +1,10 @@
 ﻿global using MongoDB.Bson;
 global using MongoDB.Bson.Serialization.Attributes;.
+global using CustomServiceRegistry.RegistryApi.Configurations;
+global using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
+global using CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
+global using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
+global using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
+global using CustomServiceRegistry.RegistryApi.Middlewares;
+global using CustomServiceRegistry.RegistryApi.Services;
+global using Microsoft.AspNetCore.ResponseCompression;
