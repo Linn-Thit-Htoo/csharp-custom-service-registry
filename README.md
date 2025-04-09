@@ -1,4 +1,9 @@
 ### How to Run?
+
+```
+git clone https://github.com/Linn-Thit-Htoo/CustomServiceRegistr.git
+```
+
 ```
 docker-compose -p serviceregistry -f docker-compose-uat.yml up -d --build
 ```
