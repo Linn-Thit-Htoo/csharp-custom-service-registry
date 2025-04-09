@@ -1,7 +1,4 @@
-﻿global using MongoDB.Bson;
-global using MongoDB.Bson.Serialization.Attributes;.
-
-namespace CustomServiceRegistry.RegistryApi.Collections;
+﻿namespace CustomServiceRegistry.RegistryApi.Collections;
 
 public class CentralRegistryCollection
 {
