@@ -11,13 +11,13 @@ namespace CustomServiceRegistry.RegistryApi.Middlewares;
 
 public class RateLimiterMiddleware : IMiddleware
 {
-    private readonly IMongoCollection<TenantRateLimiterCollection> _tenantReateLimiterCollection;
+    private readonly IMongoCollection<TenantRateLimiterCollection> _tenantRateLimiterCollection;
     private readonly AppSetting _appSetting;
 
     public RateLimiterMiddleware(IOptions<AppSetting> appSetting)
     {
         _appSetting = appSetting.Value;
-        _tenantReateLimiterCollection =
+        _tenantRateLimiterCollection =
             CollectionNames.TenantRateLimiterCollection.GetCollection<TenantRateLimiterCollection>();
     }
 
@@ -32,7 +32,7 @@ public class RateLimiterMiddleware : IMiddleware
             return;
         }
 
-        var item = await _tenantReateLimiterCollection
+        var item = await _tenantRateLimiterCollection
             .Find(x => x.TenantId == Guid.Parse(apiKey))
             .SingleOrDefaultAsync();
 
@@ -61,7 +61,7 @@ public class RateLimiterMiddleware : IMiddleware
             );
             var update = Builders<TenantRateLimiterCollection>.Update.Inc(x => x.TotalRequest, 1);
 
-            await _tenantReateLimiterCollection.UpdateOneAsync(updateFilter, update);
+            await _tenantRateLimiterCollection.UpdateOneAsync(updateFilter, update);
         }
         else
         {
@@ -72,7 +72,7 @@ public class RateLimiterMiddleware : IMiddleware
                 CreatedAt = DateTime.Now,
                 TotalRequest = 1,
             };
-            await _tenantReateLimiterCollection.InsertOneAsync(tenantRateLimiterCollection);
+            await _tenantRateLimiterCollection.InsertOneAsync(tenantRateLimiterCollection);
         }
 
         await next(context);
