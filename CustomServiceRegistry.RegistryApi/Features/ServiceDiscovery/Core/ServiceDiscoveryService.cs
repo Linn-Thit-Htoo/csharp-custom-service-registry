@@ -23,6 +23,7 @@ public class ServiceDiscoveryService : IServiceDiscoveryService
     )
     {
         Result<DiscoverServiceResponse> result;
+        var lst = new List<ServiceDiscoveryModel>();
 
         var item = await _centralRegistryCollection
             .Find(x => x.ServiceName.ToLower().Equals(serviceName.ToLower()))
@@ -33,18 +34,21 @@ public class ServiceDiscoveryService : IServiceDiscoveryService
             goto result;
         }
 
-        result = Result<DiscoverServiceResponse>.Success(
-            new DiscoverServiceResponse
-            {
-                ServiceId = item.ServiceId,
-                HealthCheckUrl = item.HealthCheckUrl,
-                HostName = item.HostName,
-                Port = item.Port,
-                Scheme = item.Scheme,
-                ServiceName = item.ServiceName,
-                TenantId = item.TenantId
-            }
-        );
+        lst.Add(new ServiceDiscoveryModel()
+        {
+            ServiceId = item.ServiceId,
+            HealthCheckUrl = item.HealthCheckUrl,
+            HostName = item.HostName,
+            Port = item.Port,
+            Scheme = item.Scheme,
+            ServiceName = item.ServiceName,
+            TenantId = item.TenantId
+        });
+
+        result = Result<DiscoverServiceResponse>.Success(new DiscoverServiceResponse()
+        {
+            Services = lst
+        });
 
     result:
         return result;
