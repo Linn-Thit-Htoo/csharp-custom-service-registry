@@ -1,5 +1,4 @@
-﻿
-namespace CustomServiceRegistry.RegistryApi.Collections;
+﻿namespace CustomServiceRegistry.RegistryApi.Collections;
 
 public class TenantRateLimiterCollection
 {
