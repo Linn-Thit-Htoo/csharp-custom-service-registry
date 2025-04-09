@@ -13,7 +13,6 @@ public interface IServiceRegistryService
     );
     Task<Result<DeregisterServiceResponse>> DeregisterAsync(
         DeregisterServiceCommand command,
-        Guid tenantId,
         CancellationToken cs = default
     );
     Task DeregisterAsync(Guid id, CancellationToken cs = default);

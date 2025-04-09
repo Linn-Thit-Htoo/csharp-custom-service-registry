@@ -25,13 +25,8 @@ public class DeregisterServiceCommandHandler
         CancellationToken cancellationToken
     )
     {
-        string? apiKey =
-            _httpContext.Request.Headers[ApplicationConstants.ApiKey].ToString()
-            ?? throw new Exception("Api Key cannot be nul.");
-
         return await _serviceRegistryService.DeregisterAsync(
             request,
-            Guid.Parse(apiKey),
             cancellationToken
         );
     }

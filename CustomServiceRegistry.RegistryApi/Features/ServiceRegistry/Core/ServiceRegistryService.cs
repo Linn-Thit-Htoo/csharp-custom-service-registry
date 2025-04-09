@@ -54,14 +54,13 @@ public class ServiceRegistryService : IServiceRegistryService
 
     public async Task<Result<DeregisterServiceResponse>> DeregisterAsync(
         DeregisterServiceCommand command,
-        Guid tenantId,
         CancellationToken cs = default
     )
     {
         Result<DeregisterServiceResponse> result;
 
         var item = await _centralRegistryCollection
-            .Find(x => x.ServiceId == command.ServiceId && x.TenantId == tenantId)
+            .Find(x => x.ServiceId == command.ServiceId)
             .SingleOrDefaultAsync(cancellationToken: cs);
         if (item is null)
         {

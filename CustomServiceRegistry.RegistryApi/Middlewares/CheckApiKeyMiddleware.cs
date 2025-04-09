@@ -42,6 +42,6 @@ public class CheckApiKeyMiddleware : IMiddleware
 
     private List<string> GetWhiteListPaths()
     {
-        return new List<string>() { "/api/Tenant/SaveTenant", "/api/ServiceLog/StreamLogs" };
+        return new List<string>() { "/api/Tenant/SaveTenant", "/api/ServiceLog/StreamLogs", "/api/ServiceDiscovery/DiscoverService" };
     }
 }
