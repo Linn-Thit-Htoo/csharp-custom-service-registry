@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documents", "documents", "{
 		docker-compose-uat.yml = docker-compose-uat.yml
 		docker-compose.yml = docker-compose.yml
 		nginx.conf = nginx.conf
+		README.md = README.md
 		Service Registry Prod.postman_collection.json = Service Registry Prod.postman_collection.json
 	EndProjectSection
 EndProject
