@@ -1,5 +1,4 @@
-﻿using MongoDB.Bson;
-
+﻿
 namespace CustomServiceRegistry.RegistryApi.Collections;
 
 public class TenantRateLimiterCollection
