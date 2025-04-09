@@ -5,7 +5,7 @@ git clone https://github.com/Linn-Thit-Htoo/CustomServiceRegistr.git
 ```
 
 ```
-docker-compose -p serviceregistry -f docker-compose-uat.yml up -d --build
+docker-compose -f docker-compose-uat.yml -p serviceregistry up -d --build
 ```
 
 ### Steps to enter mongodb shell via Putty (VPS)
