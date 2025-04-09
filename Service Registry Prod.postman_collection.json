@@ -670,69 +670,6 @@
 					"body": "{\n    \"StatusCode\": 404,\n    \"IsSuccess\": false,\n    \"Message\": \"Service not found.\",\n    \"Data\": null\n}"
 				},
 				{
-					"name": "200",
-					"originalRequest": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Key",
-								"value": "03d33e27-4438-4d12-bba2-67b2b096b6dd",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:81/api/ServiceDiscovery/DiscoverService?serviceName=auth",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "81",
-							"path": [
-								"api",
-								"ServiceDiscovery",
-								"DiscoverService"
-							],
-							"query": [
-								{
-									"key": "serviceName",
-									"value": "auth"
-								}
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Date",
-							"value": "Wed, 09 Apr 2025 16:46:26 GMT"
-						},
-						{
-							"key": "Server",
-							"value": "Kestrel"
-						},
-						{
-							"key": "Content-Encoding",
-							"value": "gzip"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Vary",
-							"value": "Accept-Encoding"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"StatusCode\": 200,\n    \"IsSuccess\": true,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"ServiceId\": \"163796ca-50c2-4526-8eea-823b2427d06f\",\n        \"TenantId\": \"03d33e27-4438-4d12-bba2-67b2b096b6dd\",\n        \"ServiceName\": \"auth\",\n        \"Scheme\": \"http\",\n        \"HostName\": \"localhost\",\n        \"Port\": 5136,\n        \"HealthCheckUrl\": \"http://localhost:5136/health\"\n    }\n}"
-				},
-				{
 					"name": "429",
 					"originalRequest": {
 						"method": "GET",
@@ -794,6 +731,76 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"StatusCode\": 429,\n    \"IsSuccess\": false,\n    \"Message\": \"Rate limit exceeded.\",\n    \"Data\": null\n}"
+				},
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Key",
+								"value": "03d33e27-4438-4d12-bba2-67b2b096b6dd",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://123.253.20.225:81/api/ServiceDiscovery/DiscoverService?serviceName=auth",
+							"protocol": "http",
+							"host": [
+								"123",
+								"253",
+								"20",
+								"225"
+							],
+							"port": "81",
+							"path": [
+								"api",
+								"ServiceDiscovery",
+								"DiscoverService"
+							],
+							"query": [
+								{
+									"key": "serviceName",
+									"value": "auth"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.27.4"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Apr 2025 06:55:30 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"StatusCode\": 200,\n    \"IsSuccess\": true,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"Services\": [\n            {\n                \"ServiceId\": \"7a62fd59-757b-485f-8d6e-4db6a0fc1ac3\",\n                \"TenantId\": \"03d33e27-4438-4d12-bba2-67b2b096b6dd\",\n                \"ServiceName\": \"auth\",\n                \"Scheme\": \"http\",\n                \"HostName\": \"localhost\",\n                \"Port\": 5136,\n                \"HealthCheckUrl\": \"http://localhost:5136/health\"\n            }\n        ]\n    }\n}"
 				}
 			]
 		}
