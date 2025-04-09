@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿global using System.Text.Json;
 
 namespace CustomServiceRegistry.RegistryApi.Extensions;
 
