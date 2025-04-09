@@ -1,3 +1,8 @@
+### How to Run?
+```
+docker-compose -p serviceregistry -f docker-compose-uat.yml up -d --build
+```
+
 ### Steps to enter mongodb shell via Putty (VPS)
 
 ```
