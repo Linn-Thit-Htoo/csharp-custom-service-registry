@@ -1,6 +1,6 @@
 ## Summary
 > [!NOTE]  
-> Custom implementation of multi-tenant service registry and dynamic service discovery including active health checks with retry mechanisms and fallback strategy, real-time stream of logs for each service using SSE protocol.
+> Custom implementation of multi-tenant service registry and dynamic service discovery including active health checks with retry mechanisms and fallback strategy, and real-time stream of logs for each service using SSE protocol.
 
 ## Technologies
 * .NET 8.0
