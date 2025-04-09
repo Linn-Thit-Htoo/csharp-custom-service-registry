@@ -1,5 +1,5 @@
 services:
-  registry:
+  registrymaster:
     image: registry:v1
     build:
       context: ./CustomServiceRegistry.RegistryApi
@@ -11,14 +11,66 @@ services:
     deploy:
       resources:
         limits:
+          cpus: "0.7"
+          memory: "300M"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+    restart: unless-stopped
+    container_name: registrymaster
+    depends_on:
+      - mongo
+ 
+  registryslave:
+    image: registry:v1
+    build:
+      context: ./CustomServiceRegistry.RegistryApi
+      dockerfile: Dockerfile
+    ports:
+      - "5166:80"
+    networks:
+      - app_network
+    deploy:
+      resources:
+        limits:
           cpus: "0.3"
           memory: "100M"
     environment:
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
     restart: unless-stopped
-    container_name: registry
+    container_name: registryslave
     depends_on:
       - mongo
+ 
+  registryslavebackup:
+    image: registry:v1
+    build:
+      context: ./CustomServiceRegistry.RegistryApi
+      dockerfile: Dockerfile
+    ports:
+      - "5167:80"
+    networks:
+      - app_network
+    deploy:
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: "100M"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+    restart: unless-stopped
+    container_name: registryslavebackup
+    depends_on:
+      - mongo
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "81:81"
+    networks:
+      - app_network
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf"
 
   mongo:
     image: mongo:latest
