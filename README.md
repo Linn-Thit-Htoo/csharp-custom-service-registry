@@ -40,6 +40,14 @@ show dbs
 ```
 
 ```
+use db_name
+```
+
+```
+show collections
+```
+
+```
 db.TenantCollection.find();
 ```
 
