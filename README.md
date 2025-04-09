@@ -13,7 +13,7 @@
 * Active health check and auto deregister the unhealthy services
 * streaming logs via Server-Sent Events (SSE)
 * Rate limiting for each tenant with daily rate limit
-* docker for containerization
+* Docker for containerization
 * Bind mount and volume mount
 * NGINX as reverse proxy
 * Active-Passive failover
