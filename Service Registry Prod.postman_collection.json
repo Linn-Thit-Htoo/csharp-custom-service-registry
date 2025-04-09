@@ -21,12 +21,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5165/api/Tenant/SaveTenant",
+					"raw": "http://localhost:81/api/Tenant/SaveTenant",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5165",
+					"port": "81",
 					"path": [
 						"api",
 						"Tenant",
@@ -50,12 +50,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5165/api/Tenant/SaveTenant",
+							"raw": "http://localhost:81/api/Tenant/SaveTenant",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5165",
+							"port": "81",
 							"path": [
 								"api",
 								"Tenant",
@@ -109,12 +109,12 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5165/api/Tenant/GetTenantInfoById",
+					"raw": "http://localhost:81/api/Tenant/GetTenantInfoById",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5165",
+					"port": "81",
 					"path": [
 						"api",
 						"Tenant",
@@ -135,12 +135,12 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5165/api/Tenant/GetTenantInfoById",
+							"raw": "http://localhost:81/api/Tenant/GetTenantInfoById",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5165",
+							"port": "81",
 							"path": [
 								"api",
 								"Tenant",
@@ -192,12 +192,12 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5165/api/Tenant/GetTenantInfoById",
+							"raw": "http://localhost:81/api/Tenant/GetTenantInfoById",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5165",
+							"port": "81",
 							"path": [
 								"api",
 								"Tenant",
@@ -245,12 +245,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5165/api/ServiceLog/StreamLogs?apikey=03d33e27-4438-4d12-bba2-67b2b096b6dd",
+					"raw": "http://localhost:81/api/ServiceLog/StreamLogs?apikey=03d33e27-4438-4d12-bba2-67b2b096b6dd",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5165",
+					"port": "81",
 					"path": [
 						"api",
 						"ServiceLog",
@@ -271,12 +271,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5165/api/ServiceLog/StreamLogs?apikey=03d33e27-4438-4d12-bba2-67b2b096b6dd",
+							"raw": "http://localhost:81/api/ServiceLog/StreamLogs?apikey=03d33e27-4438-4d12-bba2-67b2b096b6dd",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5165",
+							"port": "81",
 							"path": [
 								"api",
 								"ServiceLog",
@@ -345,12 +345,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5165/api/ServiceRegistry/RegisterService",
+					"raw": "http://localhost:81/api/ServiceRegistry/RegisterService",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5165",
+					"port": "81",
 					"path": [
 						"api",
 						"ServiceRegistry",
@@ -380,12 +380,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5165/api/ServiceRegistry/RegisterService",
+							"raw": "http://localhost:81/api/ServiceRegistry/RegisterService",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5165",
+							"port": "81",
 							"path": [
 								"api",
 								"ServiceRegistry",
@@ -446,12 +446,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5165/api/ServiceRegistry/RegisterService",
+							"raw": "http://localhost:81/api/ServiceRegistry/RegisterService",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5165",
+							"port": "81",
 							"path": [
 								"api",
 								"ServiceRegistry",
@@ -512,12 +512,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5165/api/ServiceRegistry/RegisterService",
+							"raw": "http://localhost:81/api/ServiceRegistry/RegisterService",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5165",
+							"port": "81",
 							"path": [
 								"api",
 								"ServiceRegistry",
@@ -571,12 +571,12 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:5165/api/ServiceDiscovery/DiscoverService?serviceName=auth",
+					"raw": "http://localhost:81/api/ServiceDiscovery/DiscoverService?serviceName=auth",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5165",
+					"port": "81",
 					"path": [
 						"api",
 						"ServiceDiscovery",
@@ -603,12 +603,12 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5165/api/ServiceDiscovery/DiscoverService?serviceName=auth",
+							"raw": "http://localhost:81/api/ServiceDiscovery/DiscoverService?serviceName=auth",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5165",
+							"port": "81",
 							"path": [
 								"api",
 								"ServiceDiscovery",
@@ -666,12 +666,12 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5165/api/ServiceDiscovery/DiscoverService?serviceName=auth",
+							"raw": "http://localhost:81/api/ServiceDiscovery/DiscoverService?serviceName=auth",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5165",
+							"port": "81",
 							"path": [
 								"api",
 								"ServiceDiscovery",
@@ -729,12 +729,12 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5165/api/ServiceDiscovery/DiscoverService?serviceName=auth",
+							"raw": "http://localhost:81/api/ServiceDiscovery/DiscoverService?serviceName=auth",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5165",
+							"port": "81",
 							"path": [
 								"api",
 								"ServiceDiscovery",
