@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documents", "documents", "{
 		.env = .env
 		docker-compose-uat.yml = docker-compose-uat.yml
 		docker-compose.yml = docker-compose.yml
+		nginx.conf = nginx.conf
 		Service Registry Prod.postman_collection.json = Service Registry Prod.postman_collection.json
 	EndProjectSection
 EndProject
@@ -31,5 +32,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4E59459D-E427-4BDA-AF3C-ED4F07C4F9F4} = {2E19C9BF-863D-434F-B934-77CCB68F41DC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65A50594-A991-4A09-A8F3-E445DB1A2802}
 	EndGlobalSection
 EndGlobal
