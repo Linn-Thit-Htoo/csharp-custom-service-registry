@@ -1,5 +1,5 @@
-﻿using CustomServiceRegistry.RegistryApi.Constants;
-using MongoDB.Driver;
+﻿global using CustomServiceRegistry.RegistryApi.Constants;
+global using MongoDB.Driver;
 
 namespace CustomServiceRegistry.RegistryApi.Extensions;
 
