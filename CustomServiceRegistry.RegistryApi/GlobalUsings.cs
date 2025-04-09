@@ -1,6 +1,5 @@
-﻿namespace CustomServiceRegistry.RegistryApi
+﻿namespace CustomServiceRegistry.RegistryApi;
+
+public class GlobalUsings
 {
-    public class GlobalUsings
-    {
-    }
 }
