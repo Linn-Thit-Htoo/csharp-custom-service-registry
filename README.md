@@ -1,3 +1,24 @@
+## Summary
+> [!NOTE]  
+> Custom implementation of multi-tenant service registry and dynamic service discovery including active health checks with retry mechanisms and fallback strategy, real-time stream of logs for each service using SSE protocol.
+
+## Technologies
+* .NET 8.0
+* Multi-tenant application
+* REPR Pattern
+* Vertical Slice Architecture
+* CQRS Pattern
+* Mongodb
+* Resilience Patterns (retry and fallback)
+* Active health check and auto deregister the unhealthy services
+* streaming logs via Server-Sent Events (SSE)
+* Rate limiting for each tenant with daily rate limit
+* docker for containerization
+* Bind mount and volume mount
+* NGINX as reverse proxy
+* Active-Passive failover
+* Weighted Round-Robin load balancing (Layer 7)
+
 ### How to Run?
 
 ```
