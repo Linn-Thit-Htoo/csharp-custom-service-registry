@@ -1,0 +1,39 @@
+services:
+  registry:
+    image: registry:v1
+    build:
+      context: ./CustomServiceRegistry.RegistryApi
+      dockerfile: Dockerfile
+    ports:
+      - "5165:80"
+    networks:
+      - app_network
+    deploy:
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: "100M"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+    restart: unless-stopped
+    container_name: registry
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - app_network
+    volumes:
+      - ${MONGO_MOUNT_PATH}:/data/db
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+
+networks:
+  app_network:
+    driver: bridge
