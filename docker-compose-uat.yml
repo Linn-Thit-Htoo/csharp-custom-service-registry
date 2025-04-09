@@ -11,8 +11,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.3"
-          memory: "100M"
+          cpus: "0.7"
+          memory: "300M"
     environment:
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
     restart: unless-stopped
@@ -38,6 +38,27 @@ services:
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
     restart: unless-stopped
     container_name: registryslave
+    depends_on:
+      - mongo
+ 
+  registryslavebackup:
+    image: registry:v1
+    build:
+      context: ./CustomServiceRegistry.RegistryApi
+      dockerfile: Dockerfile
+    ports:
+      - "5167:80"
+    networks:
+      - app_network
+    deploy:
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: "100M"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+    restart: unless-stopped
+    container_name: registryslavebackup
     depends_on:
       - mongo
 
