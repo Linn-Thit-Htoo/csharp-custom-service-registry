@@ -21,10 +21,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:81/api/Tenant/SaveTenant",
+					"raw": "http://123.253.20.225:81/api/Tenant/SaveTenant",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"123",
+						"253",
+						"20",
+						"225"
 					],
 					"port": "81",
 					"path": [
@@ -109,10 +112,13 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:81/api/Tenant/GetTenantInfoById",
+					"raw": "http://123.253.20.225:81/api/Tenant/GetTenantInfoById",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"123",
+						"253",
+						"20",
+						"225"
 					],
 					"port": "81",
 					"path": [
@@ -245,10 +251,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:81/api/ServiceLog/StreamLogs?apikey=03d33e27-4438-4d12-bba2-67b2b096b6dd",
+					"raw": "http://123.253.20.225:81/api/ServiceLog/StreamLogs?apikey=03d33e27-4438-4d12-bba2-67b2b096b6dd",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"123",
+						"253",
+						"20",
+						"225"
 					],
 					"port": "81",
 					"path": [
@@ -345,10 +354,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:81/api/ServiceRegistry/RegisterService",
+					"raw": "http://123.253.20.225:81/api/ServiceRegistry/RegisterService",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"123",
+						"253",
+						"20",
+						"225"
 					],
 					"port": "81",
 					"path": [
@@ -571,10 +583,13 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:81/api/ServiceDiscovery/DiscoverService?serviceName=auth",
+					"raw": "http://123.253.20.225:81/api/ServiceDiscovery/DiscoverService?serviceName=auth",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"123",
+						"253",
+						"20",
+						"225"
 					],
 					"port": "81",
 					"path": [
