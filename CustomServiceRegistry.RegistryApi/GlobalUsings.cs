@@ -8,3 +8,4 @@ global using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
 global using CustomServiceRegistry.RegistryApi.Middlewares;
 global using CustomServiceRegistry.RegistryApi.Services;
 global using Microsoft.AspNetCore.ResponseCompression;
+global using System.Text.Json;

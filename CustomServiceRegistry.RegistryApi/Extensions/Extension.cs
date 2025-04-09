@@ -1,6 +1,4 @@
-﻿global using System.Text.Json;
-
-namespace CustomServiceRegistry.RegistryApi.Extensions;
+﻿namespace CustomServiceRegistry.RegistryApi.Extensions;
 
 public static class Extension
 {
