@@ -1,7 +1,4 @@
-﻿global using CustomServiceRegistry.RegistryApi.Constants;
-global using MongoDB.Driver;
-
-namespace CustomServiceRegistry.RegistryApi.Extensions;
+﻿namespace CustomServiceRegistry.RegistryApi.Extensions;
 
 public static class MongoDbExtensions
 {

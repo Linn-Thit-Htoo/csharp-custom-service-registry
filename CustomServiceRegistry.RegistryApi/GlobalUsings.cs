@@ -12,3 +12,5 @@ global using System.Text.Json;
 global using CustomServiceRegistry.RegistryApi.Collections;
 global using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
 global using CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
+global using CustomServiceRegistry.RegistryApi.Constants;
+global using MongoDB.Driver;
