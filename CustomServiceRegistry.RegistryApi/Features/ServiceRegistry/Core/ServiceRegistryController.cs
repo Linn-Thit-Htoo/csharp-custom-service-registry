@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 
-[Route("api/[controller]")]
+[Route("api/v1/[controller]")]
 [ApiController]
 public class ServiceRegistryController : BaseController
 {

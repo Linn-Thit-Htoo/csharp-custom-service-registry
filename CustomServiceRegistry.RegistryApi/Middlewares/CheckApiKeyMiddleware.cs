@@ -44,9 +44,9 @@ public class CheckApiKeyMiddleware : IMiddleware
     {
         return new List<string>()
         {
-            "/api/Tenant/SaveTenant",
-            "/api/ServiceLog/StreamLogs",
-            "/api/ServiceDiscovery/DiscoverService",
+            "/api/v1/Tenant/SaveTenant",
+            "/api/v1/ServiceLog/StreamLogs",
+            "/api/v1/ServiceDiscovery/DiscoverService",
         };
     }
 }

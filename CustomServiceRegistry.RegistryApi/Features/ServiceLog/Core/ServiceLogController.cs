@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
 
-[Route("api/[controller]")]
+[Route("api/v1/[controller]")]
 [ApiController]
 public class ServiceLogController : BaseController
 {

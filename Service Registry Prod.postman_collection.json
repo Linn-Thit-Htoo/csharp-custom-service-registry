@@ -21,7 +21,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://123.253.20.225:81/api/Tenant/SaveTenant",
+					"raw": "http://123.253.20.225:81/api/v1/Tenant/SaveTenant",
 					"protocol": "http",
 					"host": [
 						"123",
@@ -32,6 +32,7 @@
 					"port": "81",
 					"path": [
 						"api",
+						"v1",
 						"Tenant",
 						"SaveTenant"
 					]
@@ -112,7 +113,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://123.253.20.225:81/api/Tenant/GetTenantInfoById",
+					"raw": "http://123.253.20.225:81/api/v1/Tenant/GetTenantInfoById",
 					"protocol": "http",
 					"host": [
 						"123",
@@ -123,6 +124,7 @@
 					"port": "81",
 					"path": [
 						"api",
+						"v1",
 						"Tenant",
 						"GetTenantInfoById"
 					]
@@ -251,7 +253,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://123.253.20.225:81/api/ServiceLog/StreamLogs?apikey=f3a9ab2e-8ba4-456f-b5dc-faced40ff747",
+					"raw": "http://123.253.20.225:81/api/v1/ServiceLog/StreamLogs?apikey=f3a9ab2e-8ba4-456f-b5dc-faced40ff747",
 					"protocol": "http",
 					"host": [
 						"123",
@@ -262,6 +264,7 @@
 					"port": "81",
 					"path": [
 						"api",
+						"v1",
 						"ServiceLog",
 						"StreamLogs"
 					],
@@ -354,7 +357,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://123.253.20.225:81/api/ServiceRegistry/RegisterService",
+					"raw": "http://123.253.20.225:81/api/v1/ServiceRegistry/RegisterService",
 					"protocol": "http",
 					"host": [
 						"123",
@@ -365,6 +368,7 @@
 					"port": "81",
 					"path": [
 						"api",
+						"v1",
 						"ServiceRegistry",
 						"RegisterService"
 					]
@@ -583,7 +587,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://123.253.20.225:81/api/ServiceDiscovery/DiscoverService?serviceName=blog",
+					"raw": "http://123.253.20.225:81/api/v1/ServiceDiscovery/DiscoverService?serviceName=blog",
 					"protocol": "http",
 					"host": [
 						"123",
@@ -594,6 +598,7 @@
 					"port": "81",
 					"path": [
 						"api",
+						"v1",
 						"ServiceDiscovery",
 						"DiscoverService"
 					],
@@ -825,7 +830,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://123.253.20.225:81/api/ServiceRegistry/DeregisterService",
+					"raw": "http://123.253.20.225:81/api/v1/ServiceRegistry/DeregisterService",
 					"protocol": "http",
 					"host": [
 						"123",
@@ -836,6 +841,7 @@
 					"port": "81",
 					"path": [
 						"api",
+						"v1",
 						"ServiceRegistry",
 						"DeregisterService"
 					]
