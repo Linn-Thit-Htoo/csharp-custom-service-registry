@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using CustomServiceRegistry.RegistryApi.Constants;
 using CustomServiceRegistry.RegistryApi.Features.Core;
 using Microsoft.AspNetCore.Mvc;
 
