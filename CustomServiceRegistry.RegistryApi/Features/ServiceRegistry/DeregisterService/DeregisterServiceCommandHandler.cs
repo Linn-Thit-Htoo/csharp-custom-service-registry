@@ -1,5 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
-using CustomServiceRegistry.RegistryApi.Utils;
+﻿using CustomServiceRegistry.RegistryApi.Utils;
 using MediatR;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
