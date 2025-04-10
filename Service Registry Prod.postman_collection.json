@@ -107,7 +107,7 @@
 				"header": [
 					{
 						"key": "X-Key",
-						"value": "03d33e27-4438-4d12-bba2-67b2b096b6dd",
+						"value": "f3a9ab2e-8ba4-456f-b5dc-faced40ff747",
 						"type": "text"
 					}
 				],
@@ -251,7 +251,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://123.253.20.225:81/api/ServiceLog/StreamLogs?apikey=03d33e27-4438-4d12-bba2-67b2b096b6dd",
+					"raw": "http://123.253.20.225:81/api/ServiceLog/StreamLogs?apikey=f3a9ab2e-8ba4-456f-b5dc-faced40ff747",
 					"protocol": "http",
 					"host": [
 						"123",
@@ -268,7 +268,7 @@
 					"query": [
 						{
 							"key": "apikey",
-							"value": "03d33e27-4438-4d12-bba2-67b2b096b6dd"
+							"value": "f3a9ab2e-8ba4-456f-b5dc-faced40ff747"
 						}
 					]
 				}
@@ -340,13 +340,13 @@
 				"header": [
 					{
 						"key": "X-Key",
-						"value": "03d33e27-4438-4d12-bba2-67b2b096b6dd",
+						"value": "f3a9ab2e-8ba4-456f-b5dc-faced40ff747",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"ServiceName\": \"auth\",\r\n    \"Scheme\": \"http\",\r\n    \"HostName\": \"localhost\",\r\n    \"Port\": 5136,\r\n    \"HealthCheckUrl\": \"http://localhost:5136/health\"\r\n}",
+					"raw": "{\r\n    \"ServiceName\": \"blog\",\r\n    \"Scheme\": \"http\",\r\n    \"HostName\": \"servicediscovery.somee.com\",\r\n    \"Port\": 80,\r\n    \"HealthCheckUrl\": \"http://servicediscovery.somee.com/health\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -578,12 +578,12 @@
 				"header": [
 					{
 						"key": "X-Key",
-						"value": "03d33e27-4438-4d12-bba2-67b2b096b6dd",
+						"value": "f3a9ab2e-8ba4-456f-b5dc-faced40ff747",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://123.253.20.225:81/api/ServiceDiscovery/DiscoverService?serviceName=auth",
+					"raw": "http://123.253.20.225:81/api/ServiceDiscovery/DiscoverService?serviceName=blog",
 					"protocol": "http",
 					"host": [
 						"123",
@@ -600,7 +600,7 @@
 					"query": [
 						{
 							"key": "serviceName",
-							"value": "auth"
+							"value": "blog"
 						}
 					]
 				}
@@ -801,6 +801,119 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"StatusCode\": 200,\n    \"IsSuccess\": true,\n    \"Message\": \"Success\",\n    \"Data\": {\n        \"Services\": [\n            {\n                \"ServiceId\": \"7a62fd59-757b-485f-8d6e-4db6a0fc1ac3\",\n                \"TenantId\": \"03d33e27-4438-4d12-bba2-67b2b096b6dd\",\n                \"ServiceName\": \"auth\",\n                \"Scheme\": \"http\",\n                \"HostName\": \"localhost\",\n                \"Port\": 5136,\n                \"HealthCheckUrl\": \"http://localhost:5136/health\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Deregister Service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Key",
+						"value": "f3a9ab2e-8ba4-456f-b5dc-faced40ff747",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ServiceId\": \"cebe6da3-189e-472e-92aa-ea5eb6f20577\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://123.253.20.225:81/api/ServiceRegistry/DeregisterService",
+					"protocol": "http",
+					"host": [
+						"123",
+						"253",
+						"20",
+						"225"
+					],
+					"port": "81",
+					"path": [
+						"api",
+						"ServiceRegistry",
+						"DeregisterService"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Key",
+								"value": "f3a9ab2e-8ba4-456f-b5dc-faced40ff747",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ServiceId\": \"1cf9451d-c17a-48a8-9dc7-7ab45f9004bc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://123.253.20.225:81/api/ServiceRegistry/DeregisterService",
+							"protocol": "http",
+							"host": [
+								"123",
+								"253",
+								"20",
+								"225"
+							],
+							"port": "81",
+							"path": [
+								"api",
+								"ServiceRegistry",
+								"DeregisterService"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.27.4"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 10 Apr 2025 02:31:54 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"StatusCode\": 200,\n    \"IsSuccess\": true,\n    \"Message\": \"Success\",\n    \"Data\": null\n}"
 				}
 			]
 		}
