@@ -1,5 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Collections;
-
+﻿
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
 
 public interface IServiceLogService
