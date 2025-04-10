@@ -1,5 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Collections;
-using CustomServiceRegistry.RegistryApi.Constants;
+﻿using CustomServiceRegistry.RegistryApi.Constants;
 using CustomServiceRegistry.RegistryApi.Extensions;
 using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
 using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
