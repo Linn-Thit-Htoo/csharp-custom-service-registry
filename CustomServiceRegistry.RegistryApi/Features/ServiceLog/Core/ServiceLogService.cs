@@ -1,5 +1,4 @@
 ﻿using CustomServiceRegistry.RegistryApi.Extensions;
-using MongoDB.Driver;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
 
