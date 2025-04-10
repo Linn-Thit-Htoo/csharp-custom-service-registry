@@ -1,5 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Constants;
-using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
+﻿using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 using CustomServiceRegistry.RegistryApi.Utils;
 using MediatR;
 
