@@ -1,5 +1,4 @@
-﻿
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
 
 public interface IServiceLogService
 {
