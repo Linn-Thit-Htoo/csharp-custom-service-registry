@@ -1,5 +1,4 @@
 ﻿using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
-using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
 using CustomServiceRegistry.RegistryApi.Utils;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
