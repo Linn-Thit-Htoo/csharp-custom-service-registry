@@ -1,6 +1,5 @@
 ﻿using CustomServiceRegistry.RegistryApi.Extensions;
 using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
-using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
 using CustomServiceRegistry.RegistryApi.Utils;
 using MongoDB.Driver;
 
