@@ -1,5 +1,5 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.Core;
-using MediatR;
+﻿global using CustomServiceRegistry.RegistryApi.Features.Core;
+global using MediatR;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
 
