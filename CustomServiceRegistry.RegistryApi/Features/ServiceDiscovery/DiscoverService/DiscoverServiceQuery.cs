@@ -1,5 +1,4 @@
 ﻿using CustomServiceRegistry.RegistryApi.Utils;
-using MediatR;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService;
 
