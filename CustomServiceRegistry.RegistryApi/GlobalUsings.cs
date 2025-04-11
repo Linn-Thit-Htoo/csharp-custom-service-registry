@@ -18,3 +18,5 @@ global using CustomServiceRegistry.RegistryApi.Extensions;
 global using Microsoft.AspNetCore.Mvc;
 global using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService;
 global using CustomServiceRegistry.RegistryApi.Utils;
+global using CustomServiceRegistry.RegistryApi.Features.Core;
+global using MediatR;

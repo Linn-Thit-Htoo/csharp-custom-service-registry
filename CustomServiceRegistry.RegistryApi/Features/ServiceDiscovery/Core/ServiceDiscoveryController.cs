@@ -1,7 +1,4 @@
-﻿global using CustomServiceRegistry.RegistryApi.Features.Core;
-global using MediatR;
-
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
 
 [Route("api/v1/[controller]")]
 [ApiController]
