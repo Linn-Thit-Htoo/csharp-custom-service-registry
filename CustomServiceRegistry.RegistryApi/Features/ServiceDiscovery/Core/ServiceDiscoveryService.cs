@@ -3,7 +3,6 @@ using CustomServiceRegistry.RegistryApi.Constants;
 using CustomServiceRegistry.RegistryApi.Extensions;
 using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService;
 using CustomServiceRegistry.RegistryApi.Utils;
-using MongoDB.Driver;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
 
