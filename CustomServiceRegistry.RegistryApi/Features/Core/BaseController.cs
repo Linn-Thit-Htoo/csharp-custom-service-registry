@@ -1,5 +1,5 @@
-﻿using CustomServiceRegistry.RegistryApi.Extensions;
-using Microsoft.AspNetCore.Mvc;
+﻿global using CustomServiceRegistry.RegistryApi.Extensions;
+global using Microsoft.AspNetCore.Mvc;
 
 namespace CustomServiceRegistry.RegistryApi.Features.Core;
 
