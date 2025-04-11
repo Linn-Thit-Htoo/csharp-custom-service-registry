@@ -1,6 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Collections;
-
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
 
 public class ServiceDiscoveryService : IServiceDiscoveryService
 {
