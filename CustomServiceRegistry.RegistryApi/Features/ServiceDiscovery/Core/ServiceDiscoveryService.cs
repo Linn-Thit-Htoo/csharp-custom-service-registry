@@ -1,7 +1,6 @@
 ﻿using CustomServiceRegistry.RegistryApi.Collections;
 using CustomServiceRegistry.RegistryApi.Constants;
 using CustomServiceRegistry.RegistryApi.Extensions;
-using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
 
