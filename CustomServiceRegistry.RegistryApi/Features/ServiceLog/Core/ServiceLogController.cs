@@ -1,6 +1,4 @@
-﻿global using System.Text;
-
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
 
 [Route("api/v1/[controller]")]
 [ApiController]

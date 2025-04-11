@@ -20,3 +20,4 @@ global using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Discove
 global using CustomServiceRegistry.RegistryApi.Utils;
 global using CustomServiceRegistry.RegistryApi.Features.Core;
 global using MediatR;
+global using System.Text;
