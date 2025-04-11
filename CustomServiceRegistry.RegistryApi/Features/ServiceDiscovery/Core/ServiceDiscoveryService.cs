@@ -27,21 +27,22 @@ public class ServiceDiscoveryService : IServiceDiscoveryService
             goto result;
         }
 
-        lst.Add(new ServiceDiscoveryModel()
-        {
-            ServiceId = item.ServiceId,
-            HealthCheckUrl = item.HealthCheckUrl,
-            HostName = item.HostName,
-            Port = item.Port,
-            Scheme = item.Scheme,
-            ServiceName = item.ServiceName,
-            TenantId = item.TenantId
-        });
+        lst.Add(
+            new ServiceDiscoveryModel()
+            {
+                ServiceId = item.ServiceId,
+                HealthCheckUrl = item.HealthCheckUrl,
+                HostName = item.HostName,
+                Port = item.Port,
+                Scheme = item.Scheme,
+                ServiceName = item.ServiceName,
+                TenantId = item.TenantId,
+            }
+        );
 
-        result = Result<DiscoverServiceResponse>.Success(new DiscoverServiceResponse()
-        {
-            Services = lst
-        });
+        result = Result<DiscoverServiceResponse>.Success(
+            new DiscoverServiceResponse() { Services = lst }
+        );
 
     result:
         return result;
