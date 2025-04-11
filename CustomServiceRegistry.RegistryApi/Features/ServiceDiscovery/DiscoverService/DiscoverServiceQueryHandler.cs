@@ -1,9 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Extensions;
-using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
-using CustomServiceRegistry.RegistryApi.Utils;
-using MediatR;
-
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService;
 
 public class DiscoverServiceQueryHandler
     : IRequestHandler<DiscoverServiceQuery, Result<DiscoverServiceResponse>>
