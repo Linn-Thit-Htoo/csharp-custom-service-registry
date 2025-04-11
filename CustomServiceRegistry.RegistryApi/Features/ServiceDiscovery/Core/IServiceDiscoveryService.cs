@@ -1,7 +1,4 @@
-﻿global using CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.DiscoverService;
-global using CustomServiceRegistry.RegistryApi.Utils;
-
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
 
 public interface IServiceDiscoveryService
 {
