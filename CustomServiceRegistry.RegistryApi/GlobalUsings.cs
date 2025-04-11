@@ -14,3 +14,5 @@ global using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Register
 global using CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
 global using CustomServiceRegistry.RegistryApi.Constants;
 global using MongoDB.Driver;
+global using CustomServiceRegistry.RegistryApi.Extensions;
+global using Microsoft.AspNetCore.Mvc;

@@ -1,7 +1,4 @@
-﻿global using CustomServiceRegistry.RegistryApi.Extensions;
-global using Microsoft.AspNetCore.Mvc;
-
-namespace CustomServiceRegistry.RegistryApi.Features.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.Core;
 
 [Route("api/[controller]")]
 [ApiController]
