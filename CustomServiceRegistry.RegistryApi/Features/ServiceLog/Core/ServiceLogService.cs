@@ -1,6 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Extensions;
-
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
 
 public class ServiceLogService : IServiceLogService
 {
