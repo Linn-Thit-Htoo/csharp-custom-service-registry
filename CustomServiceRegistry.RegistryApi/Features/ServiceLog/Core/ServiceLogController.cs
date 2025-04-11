@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using CustomServiceRegistry.RegistryApi.Features.Core;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceLog.Core;
