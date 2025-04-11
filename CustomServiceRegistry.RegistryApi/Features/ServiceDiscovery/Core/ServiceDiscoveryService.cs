@@ -1,5 +1,4 @@
 ﻿using CustomServiceRegistry.RegistryApi.Collections;
-using CustomServiceRegistry.RegistryApi.Constants;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceDiscovery.Core;
 
