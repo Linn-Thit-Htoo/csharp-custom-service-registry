@@ -1,8 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Extensions;
-using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
-using CustomServiceRegistry.RegistryApi.Utils;
-
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 
 public class ServiceRegistryService : IServiceRegistryService
 {
