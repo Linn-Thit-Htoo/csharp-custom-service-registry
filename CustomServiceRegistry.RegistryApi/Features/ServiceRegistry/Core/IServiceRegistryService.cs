@@ -1,6 +1,4 @@
-﻿global using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
-
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 
 public interface IServiceRegistryService
 {

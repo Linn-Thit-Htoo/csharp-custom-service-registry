@@ -21,3 +21,4 @@ global using CustomServiceRegistry.RegistryApi.Utils;
 global using CustomServiceRegistry.RegistryApi.Features.Core;
 global using MediatR;
 global using System.Text;
+global using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
