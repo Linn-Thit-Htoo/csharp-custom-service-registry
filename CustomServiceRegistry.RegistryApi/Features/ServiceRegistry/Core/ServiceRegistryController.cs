@@ -1,5 +1,4 @@
-﻿
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 
 [Route("api/v1/[controller]")]
 [ApiController]
