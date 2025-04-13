@@ -23,9 +23,6 @@ public class DeregisterServiceCommandHandler
         CancellationToken cancellationToken
     )
     {
-        return await _serviceRegistryService.DeregisterAsync(
-            request,
-            cancellationToken
-        );
+        return await _serviceRegistryService.DeregisterAsync(request, cancellationToken);
     }
 }
