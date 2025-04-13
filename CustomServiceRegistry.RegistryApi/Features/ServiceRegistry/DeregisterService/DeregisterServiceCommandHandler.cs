@@ -1,7 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Utils;
-using MediatR;
-
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
 
 public class DeregisterServiceCommandHandler
     : IRequestHandler<DeregisterServiceCommand, Result<DeregisterServiceResponse>>
