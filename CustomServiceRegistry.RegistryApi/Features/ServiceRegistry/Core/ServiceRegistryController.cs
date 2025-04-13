@@ -1,5 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
-
+﻿
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
 
 [Route("api/v1/[controller]")]
