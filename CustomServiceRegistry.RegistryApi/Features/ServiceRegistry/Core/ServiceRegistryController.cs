@@ -1,5 +1,4 @@
 ﻿using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
