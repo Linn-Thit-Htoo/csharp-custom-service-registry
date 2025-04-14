@@ -24,3 +24,4 @@ global using System.Text;
 global using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.DeregisterService;
 global using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
 global using System.Net;
+global using Microsoft.Extensions.Options;

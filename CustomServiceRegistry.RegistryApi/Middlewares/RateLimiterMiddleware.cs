@@ -1,6 +1,4 @@
-﻿global using Microsoft.Extensions.Options;
-
-namespace CustomServiceRegistry.RegistryApi.Middlewares;
+﻿namespace CustomServiceRegistry.RegistryApi.Middlewares;
 
 public class RateLimiterMiddleware : IMiddleware
 {
