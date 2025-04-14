@@ -1,7 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Utils;
-using MediatR;
-
-namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.RegisterService;
 
 public class RegisterServiceCommand : IRequest<Result<RegisterServiceResponse>>
 {
