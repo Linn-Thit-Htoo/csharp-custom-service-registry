@@ -1,4 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
+﻿global using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
 
 namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
 
