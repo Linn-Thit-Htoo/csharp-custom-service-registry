@@ -1,4 +1,4 @@
-﻿using System.Net;
+﻿global using System.Net;
 
 namespace CustomServiceRegistry.RegistryApi.Middlewares;
 
