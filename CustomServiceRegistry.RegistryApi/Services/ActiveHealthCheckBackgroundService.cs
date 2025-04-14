@@ -1,12 +1,4 @@
-﻿using System.Net;
-using CustomServiceRegistry.RegistryApi.Collections;
-using CustomServiceRegistry.RegistryApi.Configurations;
-using CustomServiceRegistry.RegistryApi.Constants;
-using CustomServiceRegistry.RegistryApi.Extensions;
-using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Core;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using Polly;
+﻿using Polly;
 
 namespace CustomServiceRegistry.RegistryApi.Services;
 
