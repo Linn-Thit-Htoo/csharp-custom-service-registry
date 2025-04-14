@@ -25,3 +25,4 @@ global using CustomServiceRegistry.RegistryApi.Features.ServiceRegistry.Deregist
 global using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
 global using System.Net;
 global using Microsoft.Extensions.Options;
+global using Polly;

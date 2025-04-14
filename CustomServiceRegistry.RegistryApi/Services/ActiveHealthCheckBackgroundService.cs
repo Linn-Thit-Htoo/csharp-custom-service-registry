@@ -1,6 +1,4 @@
-﻿global using Polly;
-
-namespace CustomServiceRegistry.RegistryApi.Services;
+﻿namespace CustomServiceRegistry.RegistryApi.Services;
 
 public class ActiveHealthCheckBackgroundService : BackgroundService
 {
