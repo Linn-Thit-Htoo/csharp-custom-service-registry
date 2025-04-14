@@ -1,7 +1,4 @@
 ﻿using System.Net;
-using CustomServiceRegistry.RegistryApi.Constants;
-using CustomServiceRegistry.RegistryApi.Extensions;
-using CustomServiceRegistry.RegistryApi.Utils;
 
 namespace CustomServiceRegistry.RegistryApi.Middlewares;
 
