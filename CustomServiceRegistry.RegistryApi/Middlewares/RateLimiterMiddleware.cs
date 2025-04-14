@@ -1,11 +1,4 @@
-﻿using System.Net;
-using CustomServiceRegistry.RegistryApi.Collections;
-using CustomServiceRegistry.RegistryApi.Configurations;
-using CustomServiceRegistry.RegistryApi.Constants;
-using CustomServiceRegistry.RegistryApi.Extensions;
-using CustomServiceRegistry.RegistryApi.Utils;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
+﻿using Microsoft.Extensions.Options;
 
 namespace CustomServiceRegistry.RegistryApi.Middlewares;
 
