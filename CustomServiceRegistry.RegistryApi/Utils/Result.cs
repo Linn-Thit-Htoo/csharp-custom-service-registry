@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace CustomServiceRegistry.RegistryApi.Utils;
+﻿namespace CustomServiceRegistry.RegistryApi.Utils;
 
 public class Result<T>
 {
