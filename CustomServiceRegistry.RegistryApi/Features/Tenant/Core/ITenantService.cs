@@ -1,6 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
-using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
-using CustomServiceRegistry.RegistryApi.Utils;
+﻿using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
 
 namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
 
