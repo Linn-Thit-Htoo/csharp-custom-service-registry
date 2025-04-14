@@ -1,6 +1,4 @@
-﻿global using System.Net;
-
-namespace CustomServiceRegistry.RegistryApi.Middlewares;
+﻿namespace CustomServiceRegistry.RegistryApi.Middlewares;
 
 public class CheckApiKeyMiddleware : IMiddleware
 {
