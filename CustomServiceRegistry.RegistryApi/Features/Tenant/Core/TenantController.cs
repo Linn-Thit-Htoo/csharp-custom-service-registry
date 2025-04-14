@@ -1,6 +1,4 @@
-﻿global using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
-
-namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
 
 [Route("api/v1/[controller]")]
 [ApiController]
