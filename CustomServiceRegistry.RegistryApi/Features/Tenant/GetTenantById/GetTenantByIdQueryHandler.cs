@@ -1,8 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
-using CustomServiceRegistry.RegistryApi.Utils;
-using MediatR;
-
-namespace CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
 
 public class GetTenantByIdQueryHandler
     : IRequestHandler<GetTenantByIdQuery, Result<GetTenantByIdResponse>>
