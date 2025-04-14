@@ -1,4 +1,4 @@
-﻿using Polly;
+﻿global using Polly;
 
 namespace CustomServiceRegistry.RegistryApi.Services;
 
