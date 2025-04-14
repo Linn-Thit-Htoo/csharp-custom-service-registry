@@ -1,12 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Collections;
-using CustomServiceRegistry.RegistryApi.Constants;
-using CustomServiceRegistry.RegistryApi.Extensions;
-using CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
-using CustomServiceRegistry.RegistryApi.Features.Tenant.GetTenantById;
-using CustomServiceRegistry.RegistryApi.Utils;
-using MongoDB.Driver;
-
-namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
 
 public class TenantService : ITenantService
 {
