@@ -1,9 +1,4 @@
-﻿using CustomServiceRegistry.RegistryApi.Features.Tenant.Core;
-using CustomServiceRegistry.RegistryApi.Utils;
-using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
+﻿namespace CustomServiceRegistry.RegistryApi.Features.Tenant.CreateTenant;
 
 public class CreateTenantCommandHandler
     : IRequestHandler<CreateTenantCommand, Result<CreateTenantResponse>>
