@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Options;
+﻿global using Microsoft.Extensions.Options;
 
 namespace CustomServiceRegistry.RegistryApi.Middlewares;
 
