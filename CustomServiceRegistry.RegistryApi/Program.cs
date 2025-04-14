@@ -1,5 +1,3 @@
-using CustomServiceRegistry.RegistryApi.Extensions;
-
 namespace CustomServiceRegistry.RegistryApi;
 
 public class Program
